@@ -1,0 +1,13 @@
+﻿  DVV-2018.cpp
+  Error.cpp
+  FST.cpp
+  ID.cpp
+  In.cpp
+  LEX.cpp
+  LexicalAnalizator.cpp
+d:\labs\yap\кп\dvv-2018\dvv-2018\lexicalanalizator.cpp(21): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labs\yap\кп\dvv-2018\dvv-2018\lexicalanalizator.cpp(122): warning C4101: iEntry: неиспользованная локальная переменная
+  Log.cpp
+  Parameter.cpp
+  Создание кода...
+  DVV-2018.vcxproj -> D:\Labs\YAP\КП\DVV-2018\Debug\DVV-2018.exe
