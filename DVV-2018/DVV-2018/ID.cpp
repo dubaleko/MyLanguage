@@ -33,19 +33,39 @@ namespace ID
 			throw ERROR_THROW(6,ERROR_ZERO_LINE,ERROR_ZERO_COL);
 		return itable.table[nstr];
 	}
-	int ID::IsId(IdTable& idtable, char id[ID_MAXSIZE]) {
-		bool flag = false;
-		for (int i = idtable.size - 1; i > -1; i--)
+
+	Id getid(wchar_t idfile[])
+	{
+		Id id;
+		wcscpy_s(id.idfile, idfile);
+		ofstream *FILE = new ofstream;
+		(*FILE).open(idfile);
+		if (!(*FILE).is_open())
+			throw ERROR_THROW(108, ERROR_ZERO_LINE, ERROR_ZERO_COL);
+		id.stream = FILE;
+		return id;
+	}
+	void Close(Id id)
+	{
+		(*id.stream).close();
+	}
+	void WriteId(Id id, ID::IdTable& itable)
+	{
+		*id.stream << "\tТаблица идентификаторов:\n";
+		*id.stream << "Строка\tТип Id\t\tТип переменной\tИмя\tЗначение\n";
+		for (unsigned int i = 0; i < (unsigned int)itable.size; i++)
 		{
-			flag = false;
-			for (int j = 0; j < ID_MAXSIZE; j++)
-				if (idtable.table[i].id[j] != id[j]) {
-					flag = true;
-					break;
-				}
-			if (flag == false)
-				return i;
+			*id.stream << itable.table[i].idxfirstLE << "\t" << itable.table[i].idtype << "\t\t" << itable.table[i].iddatatype << "\t\t" << itable.table[i].id << "\t";
+			if (itable.table[i].iddatatype == ID::INT)
+				*id.stream << itable.table[i].value.vint;
+			else if (itable.table[i].iddatatype == ID::STR)
+				*id.stream << itable.table[i].value.vstr->str;
+			else if (itable.table[i].iddatatype == ID::BOOL)
+				*id.stream << itable.table[i].value.vbool;
+			*id.stream << endl;
 		}
-		return TI_NULLIDX;
+		*id.stream << "Тип ID  1- переменная, 2- функция, 3- параметр, 4- литерал" << endl;
+		*id.stream << "Тип переменной 1- integer, 2- string, 3 - bool";
+		*id.stream << "\n\n";
 	}
 }

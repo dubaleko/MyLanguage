@@ -16,6 +16,4 @@ namespace Log
 	void WriteIn(LOG, In::IN);							//инфу о входном файле
 	void WriteError(LOG, Error::ERROR);					//информацию об ошибке
 	void Close(LOG);									//закрыть программу
-	void WriteLex(LOG log, LEX::LexTable& ltable);
-	void WriteId(LOG log, ID::IdTable& itable);
 };

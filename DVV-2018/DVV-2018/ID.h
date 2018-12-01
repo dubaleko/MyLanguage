@@ -40,9 +40,17 @@ namespace ID
 		int size;						//текущий размер таблицы идентификаторов ( < maxsize)
 		Entry* table;					//массив строк таблицы идентификаторов
 	};
+	struct Id
+	{
+		wchar_t idfile[PARAMETER_MAX_SIZE];
+		std::ofstream* stream;
+	};
+	static const Id FIRSTINIT = { L"", NULL };	//для начальной инициализации ID
+	Id getid(wchar_t idfile[]);			 //сформировать структуру ID
 	IdTable Create(int);				//создать таблицу идентификаторов(емкость таблицы идентификаторов < TI_MAXSIZE)
 	void Add(IdTable&, Entry);			//добавить строку в таблицу идентификаторов(idtable, entry)
 	Entry GetEntry(IdTable&, int);		//получить строку таблицы идентификторов(idtable, номер получаемой строки)
-	int IsId(IdTable&, char id[ID_MAXSIZE]);		//возврат: номер строки(если есть), TI_NULLIDX(если нет)(idtable, id)
-	void Delete(IdTable&);							//удалить таблицу лексем(idtable)			
+	void Delete(IdTable&);			   //удалить таблицу лексем(idtable)
+	void WriteId(Id id, ID::IdTable& itable); // запись в файл
+	void Close(Id id); // закрыть протокол
 }

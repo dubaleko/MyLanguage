@@ -27,17 +27,6 @@
 	FST::NODE(1, FST::RELATION('l', 4)),\
 	FST::NODE()
 
-#define FST_FUNCTION 9,  \
-	FST::NODE(1, FST::RELATION('f', 1)),\
-	FST::NODE(1, FST::RELATION('u', 2)),\
-	FST::NODE(1, FST::RELATION('n', 3)),\
-	FST::NODE(1, FST::RELATION('c', 4)),\
-	FST::NODE(1, FST::RELATION('t', 5)),\
-	FST::NODE(1, FST::RELATION('i', 6)),\
-	FST::NODE(1, FST::RELATION('o', 7)),\
-	FST::NODE(1, FST::RELATION('n', 8)),\
-	FST::NODE()
-
 #define FST_RETURN 7, \
 	FST::NODE(1, FST::RELATION('r', 1)),\
 	FST::NODE(1, FST::RELATION('e', 2)),\
@@ -55,11 +44,10 @@
 	FST::NODE(1, FST::RELATION('t', 5)),\
 	FST::NODE()
 
-#define FST_MAIN 5, \
-	FST::NODE(1, FST::RELATION('m', 1)),\
-	FST::NODE(1, FST::RELATION('a', 2)),\
-	FST::NODE(1, FST::RELATION('i', 3)),\
-	FST::NODE(1, FST::RELATION('n', 4)),\
+#define FST_DVV 4, \
+	FST::NODE(1, FST::RELATION('d', 1)),\
+	FST::NODE(1, FST::RELATION('v', 2)),\
+	FST::NODE(1, FST::RELATION('v', 3)),\
 	FST::NODE()
 
 #define FST_IF 3, \
@@ -144,8 +132,8 @@
     FST::NODE(2, FST::RELATION('h',5), FST::RELATION('e',5)),\
     FST::NODE()
 
-#define FST_SEMICOLON 2,\
-    FST::NODE(1, FST::RELATION(';',1)),\
+#define FST_POINT 2,\
+    FST::NODE(1, FST::RELATION('.',1)),\
     FST::NODE()
 
 #define FST_COMMA 2,\
@@ -153,11 +141,11 @@
     FST::NODE()
 
 #define FST_LEFTBRACE 2,\
-    FST::NODE(1, FST::RELATION('{',1)),\
+    FST::NODE(1, FST::RELATION('[',1)),\
     FST::NODE()
 
 #define FST_RIGHTBRACE 2,\
-    FST::NODE(1, FST::RELATION('}',1)),\
+    FST::NODE(1, FST::RELATION(']',1)),\
     FST::NODE()
 
 #define FST_LEFTHESIS 2,	\

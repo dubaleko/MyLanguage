@@ -17,7 +17,7 @@ namespace LA
 		ID::IDTYPE idType;
 		ltable = &lextable;
 		itable = &idtable;
-		//область видимсоти??? сделать протоколы для таблицы лексем и id ??  больше сепараторов?
+        // больше сепараторов?? 
 		for (int i = 0; i < strlen(inText); i++)
 		{
 			buffer[sizeofbuf] = inText[i];
@@ -76,14 +76,6 @@ namespace LA
 					idType = ID::P;
 					continue;
 				}
-				FST::FST fstfunc(buffer, FST_FUNCTION);
-				if (FST::execute(fstfunc))
-				{
-					LEX::Entry lEntry = { LEX_FUNCTION, line };
-					LEX::Add(*ltable, lEntry);
-					idType = ID::F;
-					continue;
-				}
 				FST::FST fstret(buffer, FST_RETURN);
 				if (FST::execute(fstret))
 				{
@@ -93,17 +85,17 @@ namespace LA
 					continue;
 				}
 				FST::FST fstprint(buffer, FST_PRINT);
-				if (FST::execute(fstret))
+				if (FST::execute(fstprint))
 				{
 					LEX::Entry lEntry = { LEX_PRINT, line };
 					LEX::Add(*ltable, lEntry);
 					idType = ID::V;
 					continue;
 				}
-				FST::FST fstmain(buffer, FST_MAIN);
+				FST::FST fstmain(buffer, FST_DVV);
 				if (FST::execute(fstmain))
 				{
-					LEX::Entry lEntry = { LEX_MAIN, line };
+					LEX::Entry lEntry = { LEX_DVV, line };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
@@ -119,8 +111,6 @@ namespace LA
 				{
 					LEX::Entry lEntry = { LEX_ELSE, line };
 					LEX::Add(*ltable, lEntry);
-					ID::Entry iEntry;
-
 					continue;
 				}
 				FST::FST  fstlitbool(buffer, FST_BOOLLIT);
@@ -235,10 +225,10 @@ namespace LA
 					}
 					continue;
 				}
-				FST::FST fstsmcol(buffer, FST_SEMICOLON);
+				FST::FST fstsmcol(buffer, FST_POINT);
 				if (FST::execute(fstsmcol))
 				{
-					LEX::Entry lEntry = { LEX_SEMICOLON, line };
+					LEX::Entry lEntry = { LEX_POINT, line };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}

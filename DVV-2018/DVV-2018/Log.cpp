@@ -8,7 +8,7 @@ namespace Log
 		LOG log;
 		wcscpy_s(log.logfile, logfile);
 		ofstream *FILE = new ofstream;
-		(*FILE).open(logfile, ios_base::out, ios_base::trunc);
+		(*FILE).open(logfile);
 		if (!(*FILE).is_open())
 		throw ERROR_THROW(112,ERROR_ZERO_LINE,ERROR_ZERO_COL);
 		log.stream = FILE;
@@ -31,12 +31,16 @@ namespace Log
 	}
 	void WriteParm(LOG log, Parameter::PARAMETER parm)
 	{
-		char in[PARAMETER_MAX_SIZE], newlog[PARAMETER_MAX_SIZE];
+		char in[PARAMETER_MAX_SIZE], newlog[PARAMETER_MAX_SIZE], id[PARAMETER_MAX_SIZE], lx[PARAMETER_MAX_SIZE];
 		wcstombs(in, parm.in, PARAMETER_MAX_SIZE);
 		wcstombs(newlog, parm.log, PARAMETER_MAX_SIZE);
+		wcstombs(id, parm.id, PARAMETER_MAX_SIZE);
+		wcstombs(lx, parm.lx, PARAMETER_MAX_SIZE);
 		*log.stream << "----Параметры----" << endl;
 		*log.stream << "-log: " << newlog << endl;
-		*log.stream << "-in: " << in << endl << endl;
+		*log.stream << "-in: " << in << endl;
+		*log.stream << "-id: " << id << endl;
+		*log.stream << "-lx: " << lx << endl << endl;
 	}
 	void WriteIn(LOG log, In::IN in)
 	{
@@ -57,40 +61,5 @@ namespace Log
 	void Close(LOG log)
 	{
 		(*log.stream).close();
-	}
-	void WriteLex(LOG log, LEX::LexTable& ltable)
-	{
-		*log.stream << "  Таблица лексем:\n";
-		unsigned int compLine = -1;
-		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
-		{
-			if (compLine != ltable.table[i].sn)
-			{
-				*log.stream << endl << ltable.table[i].sn << ".\t";
-				compLine = ltable.table[i].sn;
-			}
-			*log.stream << ltable.table[i].lexema;
-		}
-		*log.stream << "\n\n";
-	}
-
-	void WriteId(LOG log, ID::IdTable& itable)
-	{
-		*log.stream << "\tТаблица идентификаторов:\n";
-		*log.stream << "Строка\tТип Id\t\tТип переменной\tИмя\tЗначение\n";
-		for (unsigned int i = 0; i < (unsigned int)itable.size; i++)
-		{
-			*log.stream << itable.table[i].idxfirstLE << "\t" << itable.table[i].idtype << "\t\t" << itable.table[i].iddatatype << "\t\t" << itable.table[i].id << "\t";
-			if (itable.table[i].iddatatype == ID::INT)
-				*log.stream << itable.table[i].value.vint;
-			else if (itable.table[i].iddatatype == ID::STR)
-				*log.stream << itable.table[i].value.vstr->str;
-			else if (itable.table[i].iddatatype == ID::BOOL)
-				*log.stream << itable.table[i].value.vbool;
-			*log.stream << endl;
-		}
-		*log.stream << "Тип ID  1- переменная, 2- функция, 3- параметр, 4- литерал" << endl;
-		*log.stream << "Тип переменной 1- integer, 2- string, 3 - bool";
-		*log.stream << "\n\n";
 	}
 }

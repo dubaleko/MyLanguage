@@ -33,4 +33,37 @@ namespace LEX
 		throw ERROR_THROW(5,ERROR_ZERO_LINE,ERROR_ZERO_COL);
 		return ltable.table[nstr];
 	}
+
+	Lex getlex(wchar_t lexfile[])
+	{
+		Lex lx;
+		wcscpy_s(lx.lexfile, lexfile);
+		ofstream *FILE = new ofstream;
+		(*FILE).open(lexfile);
+		if (!(*FILE).is_open())
+		throw ERROR_THROW(109, ERROR_ZERO_LINE, ERROR_ZERO_COL);
+		lx.stream = FILE;
+		return lx;
+	}
+
+	void Close(Lex lex)
+	{
+		(*lex.stream).close();
+	}
+
+	void WriteLex(Lex lx, LEX::LexTable& ltable)
+	{
+		*lx.stream << "  Таблица лексем:\n";
+		unsigned int compLine = -1;
+		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
+		{
+			if (compLine != ltable.table[i].sn)
+			{
+				*lx.stream << endl << ltable.table[i].sn << ".\t";
+				compLine = ltable.table[i].sn;
+			}
+			*lx.stream << ltable.table[i].lexema;
+		}
+		*lx.stream << "\n\n";
+	}
 }

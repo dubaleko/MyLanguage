@@ -1,1 +1,23 @@
-integer x : 10 ;
+dvv
+[
+integer x : 15 . 
+integer y : 10 . 
+string  str : 'mystring' . 
+string newstr : 'newmystring' . 
+bool mb . 
+if ( strlen(str) > substr(newstr) )
+[
+bool mb : truth . 
+]
+else
+[
+bool mb : false .  
+]
+print ( mb ) 
+integer z : x + y . 
+integer q : x - y . 
+integer w : x * y . 
+integer zqw : x + y + w . 
+print ( str ) .
+return zqw . 
+] 
