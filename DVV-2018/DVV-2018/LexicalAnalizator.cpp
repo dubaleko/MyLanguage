@@ -340,7 +340,7 @@ namespace LA
 					goto link;
 				}
 				FST::FST fstslash(buffer, FST_DIRSLASH);
-				if (FST::execute(fststar))
+				if (FST::execute(fstslash))
 				{
 					LEX::Entry lEntry = { LEX_DIRSLASH, line };
 					LEX::Add(*ltable, lEntry);

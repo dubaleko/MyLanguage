@@ -27,7 +27,6 @@
 #define LEX_MINUS '-'
 #define LEX_STAR '*'
 #define LEX_DIRSLASH '/'
-#define LEX_SIGN 'v'
 #define LEX_ENDL '\n'
 #define LEX_END '\0'
 #define LEX_SPACE ' '
@@ -63,4 +62,5 @@ namespace LEX
 	Lex getlex(wchar_t lexfile[]);
 	void Close(Lex lx);
 	void WriteLex(Lex lx, LEX::LexTable& ltable); //записать таблицу в файл
+	void WriteData(Lex lx); //время создания
 }

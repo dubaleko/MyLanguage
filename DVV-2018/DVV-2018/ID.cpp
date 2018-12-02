@@ -68,4 +68,14 @@ namespace ID
 		*id.stream << "Тип переменной 1- integer, 2- string, 3 - bool";
 		*id.stream << "\n\n";
 	}
+	void WriteData(Id id)
+	{
+		char Date[50];
+		struct tm *date;
+		const time_t nowtime = time(NULL);
+		date = localtime(&nowtime);
+		strftime(Date, 50, "%d.%m.%Y %H:%M:%S, %A", date);
+		*id.stream << "----Протокол id----" << endl;
+		*id.stream << "Время создания протокола: " << Date << endl;
+	}
 }

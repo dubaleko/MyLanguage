@@ -48,6 +48,15 @@
     <ClInclude Include="LexicalAnalizator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="MFST.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GRB.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Rule.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -78,6 +87,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="LexicalAnalizator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GRB.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MFST.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

@@ -25,9 +25,8 @@ namespace Log
 		const time_t nowtime = time(NULL);
 		date = localtime(&nowtime);
 		strftime(Date, 50, "%d.%m.%Y %H:%M:%S, %A", date);
-		*log.stream << "----Протокол----" << endl;
+		*log.stream << "----Протокол log----" << endl;
 		*log.stream << "Время создания протокола: " << Date << endl;
-
 	}
 	void WriteParm(LOG log, Parameter::PARAMETER parm)
 	{

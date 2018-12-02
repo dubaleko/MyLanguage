@@ -5,6 +5,8 @@
 #include <string>
 #include <fstream>
 #include <ctime>
+#include <iomanip> 
+#include <stack>
 #pragma warning(disable: 4996)
 using namespace std;
 
@@ -17,3 +19,6 @@ using namespace std;
 #include "graf.h"
 #include "Log.h"
 #include "LexicalAnalizator.h"
+#include "GRB.h"
+#include "MFST.h"
+

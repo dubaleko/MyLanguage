@@ -66,4 +66,14 @@ namespace LEX
 		}
 		*lx.stream << "\n\n";
 	}
+	void WriteData(Lex lx)
+	{
+		char Date[50];
+		struct tm *date;
+		const time_t nowtime = time(NULL);
+		date = localtime(&nowtime);
+		strftime(Date, 50, "%d.%m.%Y %H:%M:%S, %A", date);
+		*lx.stream << "----Протокол lx----" << endl;
+		*lx.stream << "Время создания протокола: " << Date << endl;
+	}
 }

@@ -53,4 +53,5 @@ namespace ID
 	void Delete(IdTable&);			   //удалить таблицу лексем(idtable)
 	void WriteId(Id id, ID::IdTable& itable); // запись в файл
 	void Close(Id id); // закрыть протокол
+	void WriteData(Id id); //время создания
 }
