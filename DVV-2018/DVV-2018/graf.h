@@ -62,6 +62,24 @@
 	FST::NODE(1, FST::RELATION('e', 4)),\
 	FST::NODE()
 
+#define FST_STRLEN 7,\
+    FST::NODE(1, FST::RELATION('s',1)),\
+    FST::NODE(1, FST::RELATION('t',2)),\
+    FST::NODE(1, FST::RELATION('r',3)),\
+    FST::NODE(1, FST::RELATION('l',4)),\
+    FST::NODE(1, FST::RELATION('e',5)),\
+    FST::NODE(1, FST::RELATION('n',6)),\
+    FST::NODE()
+
+#define FST_SUBSTR 7,\
+    FST::NODE(1, FST::RELATION('s',1)),\
+    FST::NODE(1, FST::RELATION('u',2)),\
+    FST::NODE(1, FST::RELATION('b',3)),\
+    FST::NODE(1, FST::RELATION('s',4)),\
+    FST::NODE(1, FST::RELATION('t',5)),\
+    FST::NODE(1, FST::RELATION('r',6)),\
+    FST::NODE()
+
 #define FST_ID 2, \
 	FST::NODE(52, \
 	FST::RELATION('a', 0), FST::RELATION('b', 0), FST::RELATION('c', 0), FST::RELATION('d', 0), FST::RELATION('e', 0), FST::RELATION('f', 0),\

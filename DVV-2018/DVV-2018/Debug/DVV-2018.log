@@ -1,2 +1,3 @@
-﻿  Log.cpp
+﻿  LexicalAnalizator.cpp
+d:\labs\yap\кп\dvv-2018\dvv-2018\lexicalanalizator.cpp(23): warning C4018: <: несоответствие типов со знаком и без знака
   DVV-2018.vcxproj -> D:\Labs\YAP\КП\DVV-2018\Debug\DVV-2018.exe

@@ -12,6 +12,7 @@
 #define LEX_ELSE 'e'
 #define LEX_RETURN 'r'
 #define LEX_PRINT 'p'
+#define LEX_FUNCTION 'f'
 #define LEX_POINT '.'
 #define LEX_COMMA ','
 #define LEX_LEFTBRACE '['

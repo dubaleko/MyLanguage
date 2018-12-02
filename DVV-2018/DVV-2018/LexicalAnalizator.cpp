@@ -9,8 +9,10 @@ namespace LA
 		bool provsep = false;
 		bool proverka = false;
 		bool newflag = false;
+		bool secondflag = false;
 		char string[5] = "LTR ";
 		char buffer[LT_MAXSIZE];
+		char newbuf[LT_MAXSIZE];
 		LEX::LexTable* ltable;
 		ID::IdTable* itable;
 		ID::IDDATATYPE dataType;
@@ -21,7 +23,8 @@ namespace LA
 		for (int i = 0; i < strlen(inText); i++)
 		{
 			buffer[sizeofbuf] = inText[i];
-			sizeofbuf++;
+		    sizeofbuf++;
+			secondflag = false;
 			provsep = false;
 			if (newflag)
 			{
@@ -29,11 +32,17 @@ namespace LA
 				col = 0;
 				newflag = false;
 			}
-			if (inText[i] == LEX_SPACE || inText[i] == LEX_ENDL)
+			if (inText[i] == LEX_SPACE || inText[i] == LEX_ENDL || inText[i] == LEX_POINT || inText[i] == LEX_LEFTHESIS || inText[i] == LEX_RIGHTHESIS || inText[i] == LEX_RIGHTBRACE || inText[i] == LEX_LEFTBRACE || inText[i] == LEX_COMMA)
 			{
 				if (inText[i] == LEX_ENDL)
 				{
 					newflag = true;
+				}
+				if (inText[i] == LEX_POINT || inText[i] == LEX_LEFTHESIS || inText[i] == LEX_RIGHTHESIS || inText[i] == LEX_RIGHTBRACE || inText[i] == LEX_LEFTBRACE || inText[i] == LEX_COMMA)
+				{
+					newbuf[0] = buffer[sizeofbuf-1];
+					newbuf[1] = LEX_END;
+					secondflag = true;
 				}
 				if (sizeofbuf == 1)
 				{
@@ -41,13 +50,13 @@ namespace LA
 				}
 				else
 				{
-					buffer[sizeofbuf - 1] = LEX_END;
+					buffer[sizeofbuf-1] = LEX_END;
 				}
 				sizeofbuf = 0;
 				provsep = true;
 			}
 			col++;
-			if (provsep == true)
+			if (provsep)
 			{
 				FST::FST fstint(buffer, FST_INTEGER);
 				if (FST::execute(fstint))
@@ -56,7 +65,7 @@ namespace LA
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::INT;
 					idType = ID::P;
-					continue;
+					goto link;
 				}
 				FST::FST fststr(buffer, FST_STRING);
 				if (FST::execute(fststr))
@@ -65,7 +74,7 @@ namespace LA
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::STR;
 					idType = ID::P;
-					continue;
+					goto link;
 				}
 				FST::FST fstbool(buffer, FST_BOOL);
 				if (FST::execute(fstbool))
@@ -74,7 +83,7 @@ namespace LA
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::BOOL;
 					idType = ID::P;
-					continue;
+					goto link;
 				}
 				FST::FST fstret(buffer, FST_RETURN);
 				if (FST::execute(fstret))
@@ -82,7 +91,7 @@ namespace LA
 					LEX::Entry lEntry = { LEX_RETURN, line };
 					LEX::Add(*ltable, lEntry);
 					idType = ID::V;
-					continue;
+					goto link;
 				}
 				FST::FST fstprint(buffer, FST_PRINT);
 				if (FST::execute(fstprint))
@@ -90,28 +99,42 @@ namespace LA
 					LEX::Entry lEntry = { LEX_PRINT, line };
 					LEX::Add(*ltable, lEntry);
 					idType = ID::V;
-					continue;
+					goto link;
 				}
-				FST::FST fstmain(buffer, FST_DVV);
-				if (FST::execute(fstmain))
+				FST::FST fstdvv(buffer, FST_DVV);
+				if (FST::execute(fstdvv))
 				{
 					LEX::Entry lEntry = { LEX_DVV, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
 				}
 				FST::FST fstif(buffer, FST_IF);
 				if (FST::execute(fstif))
 				{
 					LEX::Entry lEntry = { LEX_IF, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
 				}
 				FST::FST fstelse(buffer, FST_ELSE);
 				if (FST::execute(fstelse))
 				{
 					LEX::Entry lEntry = { LEX_ELSE, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
+				}
+				FST::FST fststrlen(buffer, FST_STRLEN);
+				if (FST::execute(fststrlen))
+				{
+					LEX::Entry lEntry = { LEX_FUNCTION, line };
+					LEX::Add(*ltable, lEntry);
+					goto link;
+				}
+				FST::FST fstsubstr(buffer, FST_SUBSTR);
+				if (FST::execute(fstsubstr))
+				{
+					LEX::Entry lEntry = { LEX_FUNCTION, line };
+					LEX::Add(*ltable, lEntry);
+					goto link;
 				}
 				FST::FST  fstlitbool(buffer, FST_BOOLLIT);
 				if (FST::execute(fstlitbool))
@@ -137,7 +160,7 @@ namespace LA
 					{
 						ID::Add(*itable, iEntry);
 					}
-					continue;
+					goto link;
 				}
 				FST::FST fstid(buffer, FST_ID);
 				if (FST::execute(fstid))
@@ -164,7 +187,7 @@ namespace LA
 						iEntry.idxfirstLE = line;
 						ID::Add(*itable, iEntry);
 					}
-					continue;
+					goto link;
 				}
 				FST::FST fstintlit(buffer, FST_INTLIT);
 				if (FST::execute(fstintlit))
@@ -193,7 +216,7 @@ namespace LA
 					{
 					  ID::Add(*itable, iEntry);
 					}
-					continue;
+					goto link;
 				}
 				FST::FST fststrlit(buffer, FST_STRLIT);
 				if (FST::execute(fststrlit))
@@ -223,10 +246,10 @@ namespace LA
 					{
 					  ID::Add(*itable, iEntry);
 					}
-					continue;
+					goto link;
 				}
-				FST::FST fstsmcol(buffer, FST_POINT);
-				if (FST::execute(fstsmcol))
+				FST::FST fstpoint(buffer, FST_POINT);
+				if (FST::execute(fstpoint))
 				{
 					LEX::Entry lEntry = { LEX_POINT, line };
 					LEX::Add(*ltable, lEntry);
@@ -272,59 +295,104 @@ namespace LA
 				{
 					LEX::Entry lEntry = { LEX_MORE, line };
 					LEX::Add(*ltable, lEntry);
-
-					continue;
+					goto link;
 				}
 				FST::FST fstless(buffer, FST_LESS);
 				if (FST::execute(fstless))
 				{
 					LEX::Entry lEntry = { LEX_LESS, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
 				}
 				FST::FST fstequally(buffer, FST_EQUALLY);
 				if (FST::execute(fstequally))
 				{
 					LEX::Entry lEntry = { LEX_EQUALLY, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
 				}
 				FST::FST fstcompare(buffer, FST_COMPARE);
 				if (FST::execute(fstcompare))
 				{
 					LEX::Entry lEntry = { LEX_COMPARE, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
 				}
 				FST::FST fstplus(buffer, FST_PLUS);
 				if (FST::execute(fstplus))
 				{
 				   LEX::Entry lEntry = { LEX_PLUS, line };
 				   LEX::Add(*ltable, lEntry);
-				   continue;
+				   goto link;
 				}
 				FST::FST fstminus(buffer, FST_MINUS);
 				if (FST::execute(fstminus))
 				{
 					LEX::Entry lEntry = { LEX_MINUS, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
 				}
 				FST::FST fststar(buffer, FST_STAR);
 				if (FST::execute(fststar))
 				{
 					LEX::Entry lEntry = { LEX_STAR, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
 				}
 				FST::FST fstslash(buffer, FST_DIRSLASH);
 				if (FST::execute(fststar))
 				{
 					LEX::Entry lEntry = { LEX_DIRSLASH, line };
 					LEX::Add(*ltable, lEntry);
-					continue;
+					goto link;
 				}
             }
+		    link:
+			if (secondflag)
+			{	
+				FST::FST fstp(newbuf, FST_POINT);
+				if (FST::execute(fstp))
+				{
+					LEX::Entry lEntry = { LEX_POINT , line };
+					LEX::Add(*ltable, lEntry);
+					continue;
+				}
+				FST::FST fstlft(newbuf, FST_LEFTHESIS);
+				if (FST::execute(fstlft))
+				{
+					LEX::Entry lEntry = { LEX_LEFTHESIS , line };
+					LEX::Add(*ltable, lEntry);
+					continue;
+				}
+				FST::FST fstrft(newbuf, FST_RIGHTHESIS);
+				if (FST::execute(fstrft))
+				{
+					LEX::Entry lEntry = { LEX_RIGHTHESIS , line };
+					LEX::Add(*ltable, lEntry);
+					continue;
+				}
+				FST::FST fstrb(newbuf, FST_RIGHTBRACE);
+				if (FST::execute(fstrb))
+				{
+					LEX::Entry lEntry = { LEX_RIGHTBRACE , line };
+					LEX::Add(*ltable, lEntry);
+					continue;
+				}
+				FST::FST fstlb(newbuf, FST_LEFTBRACE);
+				if (FST::execute(fstlb))
+				{
+					LEX::Entry lEntry = { LEX_LEFTBRACE , line };
+					LEX::Add(*ltable, lEntry);
+					continue;
+				}
+				FST::FST fstc(newbuf, FST_COMMA);
+				if (FST::execute(fstc))
+				{
+					LEX::Entry lEntry = { LEX_COMMA, line };
+					LEX::Add(*ltable, lEntry);
+					continue;
+				}
+			}
 		}
 	}
 }
