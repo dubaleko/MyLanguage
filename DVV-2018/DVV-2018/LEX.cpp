@@ -22,7 +22,7 @@ namespace LEX
 	void Delete(LexTable& ltable)
 	{
 		if (!&ltable)
-		throw ERROR_THROW(3,ERROR_ZERO_LINE,ERROR_ZERO_COL);
+		throw ERROR_THROW(117,ERROR_ZERO_LINE,ERROR_ZERO_COL);
 		delete ltable.table;
 		ltable.table = nullptr;
 	}
@@ -30,7 +30,7 @@ namespace LEX
 	Entry GetEntry(LexTable& ltable, int nstr)
 	{
 		if (ltable.size > nstr)
-		throw ERROR_THROW(5,ERROR_ZERO_LINE,ERROR_ZERO_COL);
+		throw ERROR_THROW(115,ERROR_ZERO_LINE,ERROR_ZERO_COL);
 		return ltable.table[nstr];
 	}
 

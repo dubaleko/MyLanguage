@@ -6,10 +6,20 @@
   In.cpp
   LEX.cpp
   LexicalAnalizator.cpp
-d:\labs\yap\кп\dvv-2018\dvv-2018\lexicalanalizator.cpp(23): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labs\yap\кп\dvv-2018\dvv-2018\lexicalanalizator.cpp(22): warning C4018: <: несоответствие типов со знаком и без знака
   Log.cpp
   MFST.cpp
-d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(238): warning C4267: =: преобразование из "size_t" в "short"; возможна потеря данных
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(103): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(121): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(128): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(142): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE6"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(157): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE5"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(187): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(194): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(197): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(200): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(207): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(259): warning C4267: =: преобразование из "size_t" в "short"; возможна потеря данных
   Parameter.cpp
   Создание кода...
   DVV-2018.vcxproj -> D:\Labs\YAP\КП\DVV-2018\Debug\DVV-2018.exe

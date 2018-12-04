@@ -6,7 +6,27 @@ int FST_TRACE_n = -1;
 char rbuf[205], sbuf[205], lbuf[1024];
 namespace MFST
 {
-	Rl rl;
+	Rl getrul(wchar_t rulefile[])
+	{
+		Rl rl;
+		wcscpy_s(rl.rulefile, rulefile);
+		ofstream *FILE = new ofstream;
+		(*FILE).open(rulefile);
+		if (!(*FILE).is_open())
+			throw ERROR_THROW(107, ERROR_ZERO_LINE, ERROR_ZERO_COL);
+		rl.stream = FILE;
+		return rl;
+	}
+	void WriteData(Rl rl)
+	{
+		char Date[50];
+		struct tm *date;
+		const time_t nowtime = time(NULL);
+		date = localtime(&nowtime);
+		strftime(Date, 50, "%d.%m.%Y %H:%M:%S, %A", date);
+		*rl.stream << "----Протокол rl----" << endl;
+		*rl.stream << "Время создания протокола: " << Date << endl;
+	}
 	MfstState::MfstState()
 	{
 		lenta_position = 0;
@@ -45,8 +65,9 @@ namespace MFST
 		lenta = 0;
 		lenta_size = lenta_position = 0;
 	}
-	Mfst::Mfst(LEX::LexTable plex, GRB::Greibach pgrebach)
+	Mfst::Mfst(LEX::LexTable plex, GRB::Greibach pgrebach, MFST::Rl rl)
 	{
+		this->rl = rl;
 		grebach = pgrebach;
 		lexTable = plex;
 		lenta = new short[lenta_size = lexTable.size];
@@ -70,16 +91,16 @@ namespace MFST
 					GRB::Rule::Chain chain;
 					if ((nrulechain = rule.getNextChain(lenta[lenta_position], chain, nrulechain + 1)) >= 0)
 					{
-						MFST_TRACE1
+						MFST_TRACE1(rl);
 						savestate();
 						st.pop();
 						push_chain(chain);
 						rc = NS_OK;
-						MFST_TRACE2
+						MFST_TRACE2(rl);
 					}
 					else
 					{
-						MFST_TRACE4("TNS_NORULECHAIN/NS_NORULE")
+						MFST_TRACE4("TNS_NORULECHAIN/NS_NORULE", rl)
 						savediagnosis(NS_NORULECHAIN);
 						rc = reststate() ? NS_NORULECHAIN : NS_NORULE;
 					}
@@ -93,18 +114,18 @@ namespace MFST
 				st.pop();
 				nrulechain = -1;
 				rc = TS_OK;
-				MFST_TRACE3
+				MFST_TRACE3(rl);
 			}
 			else
 			{
-				MFST_TRACE4("TS_NOK/NS_NORULECHAIN")
+				MFST_TRACE4("TS_NOK/NS_NORULECHAIN", rl)
 				rc = reststate() ? TS_NOK : NS_NORULECHAIN;
 			}
 		}
 		else
 		{
 			rc = LENTA_END;
-			MFST_TRACE4("LENTA_END")
+			MFST_TRACE4("LENTA_END",rl)
 		}
 		return rc;
 	}
@@ -118,7 +139,7 @@ namespace MFST
 	bool Mfst::savestate()
 	{ 
 		storestate.push(MfstState(lenta_position, st, nrule, nrulechain));
-		MFST_TRACE6("SAVESTATE:", storestate.size());
+		MFST_TRACE6("SAVESTATE:", storestate.size(), rl);
 		return true;
 	}
 	bool Mfst::reststate()
@@ -133,8 +154,8 @@ namespace MFST
 			nrule = state.nrule;
 			nrulechain = state.nrulechain;
 			storestate.pop();
-			MFST_TRACE5("RESSTATE")
-			MFST_TRACE2
+			MFST_TRACE5("RESSTATE", rl)
+			MFST_TRACE2(rl);
 		}
 		return rc;
 	}
@@ -163,27 +184,27 @@ namespace MFST
 		switch (rc_step)
 		{
 		case NS_NORULE:
-			MFST_TRACE4("-------> NS_NORULE")
-			cout << "--------------------------------------------------------------" << endl;
-			cout << getDiagnosis(0, buf) << endl;
-			cout << getDiagnosis(1, buf) << endl;
-			cout << getDiagnosis(2, buf) << endl;
+			MFST_TRACE4("-------> NS_NORULE", rl);
+			*rl.stream << "--------------------------------------------------------------" << endl;
+			*rl.stream << getDiagnosis(0, buf) << endl;
+			*rl.stream << getDiagnosis(1, buf) << endl;
+			*rl.stream << getDiagnosis(2, buf) << endl;
 			break;
 		case NS_NORULECHAIN:
-		MFST_TRACE4("------> NS_NORULECHAIN")
+		MFST_TRACE4("------> NS_NORULECHAIN",rl)
 		break;
 		case NS_ERROR:
-		MFST_TRACE4("------> NS_ERROR")
+		MFST_TRACE4("------> NS_ERROR",rl)
 		break;
 		case LENTA_END:
-		MFST_TRACE4("-------> NS_LENTA_END")
-		 cout << "--------------------------------------------------------------" << endl;
-		sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: Всего строк %d, Синтаксический анализ выполнен без ошибок", 0, lenta_size);
-		cout << setw(4) << left << "Всего строк " << lenta_size << ", Синтаксический анализ выполнен без ошибок" << endl;
+		MFST_TRACE4("-------> NS_LENTA_END",rl)
+		 *rl.stream << "--------------------------------------------------------------" << endl;
+		/*sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: Всего строк %d, Синтаксический анализ выполнен без ошибок", 0, lenta_size);*/
+		*rl.stream << setw(4) << left << "Всего строк " << lenta_size << ", Синтаксический анализ выполнен без ошибок" << endl;
 		rc = true;
 		break;
 		case SURPRISE:
-		MFST_TRACE4("------> SURPRISE")
+		MFST_TRACE4("------> SURPRISE",rl)
 		break;
 		}
 		return rc;
@@ -215,7 +236,7 @@ namespace MFST
 		{
 			errid = grebach.getRule(diagnosis[n].nrule).iderror;
 			Error::ERROR err = Error::geterror(errid, ERROR_ZERO_LINE, ERROR_ZERO_COL);
-			sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: строка %d, %s", err.id, lexTable.table[lpos].sn, err.message);
+			throw ERROR_THROW(err.id, lexTable.table[lpos].sn, lexTable.table[lpos].indxTI);
 			rc = buf;
 		}
 		return rc;
@@ -228,7 +249,7 @@ namespace MFST
 		{
 			state = storestate._Get_container()[i];
 			rule = grebach.getRule(state.nrule);
-			MFST_TRACE7
+			MFST_TRACE7(rl);
 		}
 	}
 	bool Mfst::savededucation()
@@ -244,26 +265,5 @@ namespace MFST
 			deducation.nrulechains[i] = state.nrulechain;
 		}
 		return true;
-	}
-	Rl getrule(wchar_t rulefile[])
-	{
-		Rl rl;
-		wcscpy_s(rl.rulefile, rulefile);
-		ofstream *FILE = new ofstream;
-		(*FILE).open(rulefile);
-		if (!(*FILE).is_open())
-		throw ERROR_THROW(107, ERROR_ZERO_LINE, ERROR_ZERO_COL);
-		rl.stream = FILE;
-		return rl;
-	}
-	void WriteData(Rl rl)
-	{
-		char Date[50];
-		struct tm *date;
-		const time_t nowtime = time(NULL);
-		date = localtime(&nowtime);
-		strftime(Date, 50, "%d.%m.%Y %H:%M:%S, %A", date);
-		*rl.stream << "----Протокол rl----" << endl;
-		*rl.stream << "Время создания протокола: " << Date << endl;
 	}
 }

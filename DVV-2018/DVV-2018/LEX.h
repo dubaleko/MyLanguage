@@ -34,18 +34,18 @@
 
 namespace LEX
 {
-	struct Entry						//строка таблицы лексем
+	struct Entry//строка таблицы лексем
 	{
 		char lexema;
-		int sn;							//номер строки в тексте
-		int indxTI;						//индекс в таблице идентификаторов или LT_TI_NULLIDX
+		int sn;//номер строки в тексте
+		int indxTI;//индекс в таблице идентификаторов или LT_TI_NULLIDX
 	};
 
-	struct LexTable						//экземпяр таблицы лексем
+	struct LexTable//экземпяр таблицы лексем
 	{
-		int maxsize;					//емкость таблицы лексем( < LT_MAXSIZE)
-		int size;						//текущий размер таблицы лексем ( < maxsize)
-		Entry* table;					//массив строк таблицы лексем
+		int maxsize;//емкость таблицы лексем( < LT_MAXSIZE)
+		int size;//текущий размер таблицы лексем ( < maxsize)
+		Entry* table;//массив строк таблицы лексем
 	};
 
 	struct Lex
@@ -55,10 +55,10 @@ namespace LEX
 	};
 
 	static const Lex FIRSTINIT = { L"", NULL };	//для начальной инициализации Lex
-	LexTable Create(int);				//создать таблицу лексем(емкость таблицы лексем < LT_MAXSIZE)
-	void Add(LexTable&, Entry&);		//добавить строку в таблицу лексем(lextable, entry)
-	Entry GetEntry(LexTable&, int);		//получить строку таблицы лексем(lextable, 'номер получаемой строки')
-	void Delete(LexTable&);				//удалить таблицу лексем
+	LexTable Create(int);//создать таблицу лексем(емкость таблицы лексем < LT_MAXSIZE)
+	void Add(LexTable&, Entry&);//добавить строку в таблицу лексем(lextable, entry)
+	Entry GetEntry(LexTable&, int);	//получить строку таблицы лексем(lextable, 'номер получаемой строки')
+	void Delete(LexTable&);//удалить таблицу лексем
 	Lex getlex(wchar_t lexfile[]);
 	void Close(Lex lx);
 	void WriteLex(Lex lx, LEX::LexTable& ltable); //записать таблицу в файл

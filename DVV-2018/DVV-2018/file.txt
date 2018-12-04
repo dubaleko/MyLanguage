@@ -1,24 +1,25 @@
-dvv[
-integer x : 20. 
+dvv
+[
+integer x : 20.
 integer y : 10.
-integer l. 
+integer l,z,q,w,m. 
 string  str : 'mystring'. 
+string  mystr : 'mynewstring'.
 bool mb.
 mb : false.
 if (x > y)
 [
-mb : truth. 
+integer p.
+p : x + y. 
+print (p). 
 ]
 else
 [
 l : strlen(str). 
 ]
 print (mb). 
-integer z : x + y.
-integer q : x - y. 
-integer w : x * y. 
-integer m : x / y. 
-bool nb : substr(newstr,str).
-print (newstr).
-return zqw. 
-] 
+z : (x + y) * (x - y).  
+bool nb : substr(mystr,str).
+print (mystr).
+return z. 
+]

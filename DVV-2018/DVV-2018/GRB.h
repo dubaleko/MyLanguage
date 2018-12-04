@@ -13,7 +13,7 @@ namespace GRB
 		short size;
 		struct Chain
 		{
-			short size;
+			short size; 
 			GRBALPHABET* nt;
 			Chain() { size = 0; nt = 0; }
 			Chain(short psize, GRBALPHABET s, ...);

@@ -30,16 +30,18 @@ namespace Log
 	}
 	void WriteParm(LOG log, Parameter::PARAMETER parm)
 	{
-		char in[PARAMETER_MAX_SIZE], newlog[PARAMETER_MAX_SIZE], id[PARAMETER_MAX_SIZE], lx[PARAMETER_MAX_SIZE];
+		char in[PARAMETER_MAX_SIZE], newlog[PARAMETER_MAX_SIZE], id[PARAMETER_MAX_SIZE], lx[PARAMETER_MAX_SIZE], rl[PARAMETER_MAX_SIZE];
 		wcstombs(in, parm.in, PARAMETER_MAX_SIZE);
 		wcstombs(newlog, parm.log, PARAMETER_MAX_SIZE);
 		wcstombs(id, parm.id, PARAMETER_MAX_SIZE);
 		wcstombs(lx, parm.lx, PARAMETER_MAX_SIZE);
+		wcstombs(rl, parm.rl, PARAMETER_MAX_SIZE);
 		*log.stream << "----Параметры----" << endl;
 		*log.stream << "-log: " << newlog << endl;
 		*log.stream << "-in: " << in << endl;
 		*log.stream << "-id: " << id << endl;
-		*log.stream << "-lx: " << lx << endl << endl;
+		*log.stream << "-lx: " << lx << endl;
+		*log.stream << "-rl: " << rl << endl;
 	}
 	void WriteIn(LOG log, In::IN in)
 	{

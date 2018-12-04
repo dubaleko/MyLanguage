@@ -19,7 +19,6 @@ namespace LA
 		ID::IDTYPE idType;
 		ltable = &lextable;
 		itable = &idtable;
-        // больше сепараторов?? 
 		for (int i = 0; i < strlen(inText); i++)
 		{
 			buffer[sizeofbuf] = inText[i];
@@ -54,6 +53,10 @@ namespace LA
 				}
 				sizeofbuf = 0;
 				provsep = true;
+				if (buffer[sizeofbuf] == LEX_SPACE || buffer[sizeofbuf] == LEX_ENDL)
+				{
+					continue;
+				}
 			}
 			col++;
 			if (provsep)
@@ -64,7 +67,7 @@ namespace LA
 					LEX::Entry lEntry = { LEX_INTEGER , line };
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::INT;
-					idType = ID::P;
+					idType = ID::V;
 					goto link;
 				}
 				FST::FST fststr(buffer, FST_STRING);
@@ -73,7 +76,7 @@ namespace LA
 					LEX::Entry lEntry = { LEX_STRING, line };
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::STR;
-					idType = ID::P;
+					idType = ID::V;
 					goto link;
 				}
 				FST::FST fstbool(buffer, FST_BOOL);
@@ -82,7 +85,7 @@ namespace LA
 					LEX::Entry lEntry = { LEX_BOOL, line };
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::BOOL;
-					idType = ID::P;
+					idType = ID::V;
 					goto link;
 				}
 				FST::FST fstret(buffer, FST_RETURN);
@@ -200,7 +203,7 @@ namespace LA
 					iEntry.idtype = ID::L;
 					long double bufNum = std::atoi(buffer);
 					if (bufNum > INT_MAX)
-					throw ERROR_THROW(7, line, col);
+					throw ERROR_THROW(121, line, col);
 					iEntry.value.vint = (int)bufNum;
 					for (int i = 0; i < itable->size; i++)
 					{
@@ -228,7 +231,7 @@ namespace LA
 					iEntry.iddatatype = ID::STR;
 					iEntry.idtype = ID::L;
 					if (strlen(buffer) > 255)
-					throw ERROR_THROW(8, line, col);
+					throw ERROR_THROW(120, line, col);
 					iEntry.value.vstr->len = strlen(buffer);
 					strcpy(iEntry.value.vstr->str, buffer);
 					for (int i = 0; i < itable->size; i++)

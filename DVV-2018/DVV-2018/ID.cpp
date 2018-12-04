@@ -22,7 +22,7 @@ namespace ID
 	void Delete(IdTable& itable)
 	{
 		if (!&itable)
-		throw ERROR_THROW(4,ERROR_ZERO_LINE,ERROR_ZERO_COL);
+		throw ERROR_THROW(118,ERROR_ZERO_LINE,ERROR_ZERO_COL);
 		delete itable.table;
 		itable.table = nullptr;
 	}
@@ -30,7 +30,7 @@ namespace ID
 	Entry GetEntry(IdTable& itable, int nstr)
 	{
 		if (itable.size > nstr)
-			throw ERROR_THROW(6,ERROR_ZERO_LINE,ERROR_ZERO_COL);
+			throw ERROR_THROW(119,ERROR_ZERO_LINE,ERROR_ZERO_COL);
 		return itable.table[nstr];
 	}
 
@@ -64,8 +64,8 @@ namespace ID
 				*id.stream << itable.table[i].value.vbool;
 			*id.stream << endl;
 		}
-		*id.stream << "Тип ID  1- переменная, 2- функция, 3- параметр, 4- литерал" << endl;
-		*id.stream << "Тип переменной 1- integer, 2- string, 3 - bool";
+		*id.stream << "Тип ID  1- переменная, 2- литерал. " << endl;
+		*id.stream << "Тип переменной 1- integer, 2- string, 3 - bool. ";
 		*id.stream << "\n\n";
 	}
 	void WriteData(Id id)

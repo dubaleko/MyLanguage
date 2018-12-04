@@ -11,46 +11,46 @@ namespace ID
 {
 	enum IDDATATYPE
 	{
-		INT = 1, STR, BOOL 				//типы данных идентификаторов
+		INT = 1, STR, BOOL //типы данных идентификаторов
 	};
 	enum IDTYPE
 	{
-		V = 1, F, P, L					//тип идентификатора(переменная, функция, параметр, литерал)
+		V = 1, L//тип идентификатора(переменная, литерал)
 	};
 	struct Entry
 	{
-		short idxfirstLE;				//индекс первой строки в таблице лексем
-		char id[ID_MAXSIZE * 2];		//идентификатор(автоматически усекается до ID_MAXSIZE)
-		IDDATATYPE iddatatype;			//тип данных
-		IDTYPE idtype;					//тип идентификатора
+		short idxfirstLE;//индекс первой строки в таблице лексем
+		char id[ID_MAXSIZE * 2];//идентификатор(автоматически усекается до ID_MAXSIZE)
+		IDDATATYPE iddatatype;//тип данных
+		IDTYPE idtype;//тип идентификатора
 		union
 		{
 			char vbool[6];
-			int vint;					//значение инт
+			int vint;//значение инт
 			struct
 			{
-				int len;							//длина строки стр
-				char str[TI_STR_MAXSIZE - 1];		//строка
-			}vstr[TI_STR_MAXSIZE];					//значение стр
-		}value;							//значение идентификатора
+				int len;//длина строки стр
+				char str[TI_STR_MAXSIZE - 1];//строка
+			}vstr[TI_STR_MAXSIZE];//значение стр
+		}value;//значение идентификатора
 	};
-	struct IdTable						//экземпляр таблицы идентификаторов
+	struct IdTable//экземпляр таблицы идентификаторов
 	{
-		int maxsize;					//макс емкость таблицы идентификаторов( < TI_MAXSIZE)
-		int size;						//текущий размер таблицы идентификаторов ( < maxsize)
-		Entry* table;					//массив строк таблицы идентификаторов
+		int maxsize;//макс емкость таблицы идентификаторов( < TI_MAXSIZE)
+		int size;//текущий размер таблицы идентификаторов ( < maxsize)
+		Entry* table;//массив строк таблицы идентификаторов
 	};
 	struct Id
 	{
 		wchar_t idfile[PARAMETER_MAX_SIZE];
 		std::ofstream* stream;
 	};
-	static const Id FIRSTINIT = { L"", NULL };	//для начальной инициализации ID
-	Id getid(wchar_t idfile[]);			 //сформировать структуру ID
-	IdTable Create(int);				//создать таблицу идентификаторов(емкость таблицы идентификаторов < TI_MAXSIZE)
-	void Add(IdTable&, Entry);			//добавить строку в таблицу идентификаторов(idtable, entry)
-	Entry GetEntry(IdTable&, int);		//получить строку таблицы идентификторов(idtable, номер получаемой строки)
-	void Delete(IdTable&);			   //удалить таблицу лексем(idtable)
+	static const Id FIRSTINIT = { L"", NULL };//для начальной инициализации ID
+	Id getid(wchar_t idfile[]);	//сформировать структуру ID
+	IdTable Create(int);//создать таблицу идентификаторов(емкость таблицы идентификаторов < TI_MAXSIZE)
+	void Add(IdTable&, Entry);//добавить строку в таблицу идентификаторов(idtable, entry)
+	Entry GetEntry(IdTable&, int);//получить строку таблицы идентификторов(idtable, номер получаемой строки)
+	void Delete(IdTable&);//удалить таблицу лексем(idtable)
 	void WriteId(Id id, ID::IdTable& itable); // запись в файл
 	void Close(Id id); // закрыть протокол
 	void WriteData(Id id); //время создания
