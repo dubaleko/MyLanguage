@@ -1,4 +1,4 @@
-#include "pch.h"
+п»ї#include "pch.h"
 #include "stdafx.h"
 
 using namespace std;
@@ -24,8 +24,8 @@ namespace MFST
 		const time_t nowtime = time(NULL);
 		date = localtime(&nowtime);
 		strftime(Date, 50, "%d.%m.%Y %H:%M:%S, %A", date);
-		*rl.stream << "----Протокол rl----" << endl;
-		*rl.stream << "Время создания протокола: " << Date << endl;
+		*rl.stream << "----РџСЂРѕС‚РѕРєРѕР» rl----" << endl;
+		*rl.stream << "Р’СЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ РїСЂРѕС‚РѕРєРѕР»Р°: " << Date << endl;
 	}
 	MfstState::MfstState()
 	{
@@ -198,9 +198,8 @@ namespace MFST
 		break;
 		case LENTA_END:
 		MFST_TRACE4("-------> NS_LENTA_END",rl)
-		 *rl.stream << "--------------------------------------------------------------" << endl;
-		/*sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: Всего строк %d, Синтаксический анализ выполнен без ошибок", 0, lenta_size);*/
-		*rl.stream << setw(4) << left << "Всего строк " << lenta_size << ", Синтаксический анализ выполнен без ошибок" << endl;
+		*rl.stream << "--------------------------------------------------------------" << endl;
+		*rl.stream << setw(4) << left << "Р’СЃРµРіРѕ СЃС‚СЂРѕРє " << lenta_size << ", РЎРёРЅС‚Р°РєСЃРёС‡РµСЃРєРёР№ Р°РЅР°Р»РёР· РІС‹РїРѕР»РЅРµРЅ Р±РµР· РѕС€РёР±РѕРє" << endl;
 		rc = true;
 		break;
 		case SURPRISE:
@@ -236,7 +235,8 @@ namespace MFST
 		{
 			errid = grebach.getRule(diagnosis[n].nrule).iderror;
 			Error::ERROR err = Error::geterror(errid, ERROR_ZERO_LINE, ERROR_ZERO_COL);
-			throw ERROR_THROW(err.id, lexTable.table[lpos].sn, lexTable.table[lpos].indxTI);
+			/*cout << "РћС€РёР±РєР° " << err.id << ":" << err.message<< " СЃС‚СЂРѕРєР° " << lexTable.table[lpos].sn << endl ;*/
+			throw ERROR_THROW(err.id, lexTable.table[lpos].sn, err.inext.column);
 			rc = buf;
 		}
 		return rc;

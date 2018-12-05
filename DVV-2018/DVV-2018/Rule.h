@@ -7,7 +7,7 @@ namespace GRB
 		Rule(NS('S'), GRB_ERROR_SERIES, 1,
 			Rule::Chain(4, TS('d'), TS('['), NS('N'), TS(']'))
 		),
-		Rule(NS('N'), GRB_ERROR_SERIES + 1, 13,   //возможные конструкци  в €зыке
+		Rule(NS('N'), GRB_ERROR_SERIES + 1, 12,   //возможные конструкци  в €зыке
 			Rule::Chain(6, TS('t'), TS('i'), TS(':'), NS('E'), TS('.'), NS('N')),	  // объ€вление переменной
 			Rule::Chain(4, TS('t'), TS('i'), TS('.'), NS('N')),
 			Rule::Chain(4, TS('t'), NS('E'), TS('.'), NS('N')),

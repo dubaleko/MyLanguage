@@ -30,6 +30,7 @@
 #define LEX_ENDL '\n'
 #define LEX_END '\0'
 #define LEX_SPACE ' '
+#define LEX_APOS '\''
 
 
 namespace LEX

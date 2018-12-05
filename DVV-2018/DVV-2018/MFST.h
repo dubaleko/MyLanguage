@@ -1,9 +1,9 @@
-#pragma once
+п»ї#pragma once
 using namespace std;
-#define MFST_TRACE_START *rl.stream << setw(4) << left << "Шаг:"\
-							  << setw(20) << left << " Правило" \
-							  << setw(30) << left << " Входная лента" \
-							  << setw(20) << left << " Стек" << endl;
+#define MFST_TRACE_START *rl.stream << setw(4) << left << "РЁР°Рі:"\
+							  << setw(20) << left << " РџСЂР°РІРёР»Рѕ" \
+							  << setw(30) << left << " Р’С…РѕРґРЅР°СЏ Р»РµРЅС‚Р°" \
+							  << setw(20) << left << " РЎС‚РµРє" << endl;
 #define MFST_TRACE1	*rl.stream << setw(4) << left << ++FST_TRACE_n << ": "\
 					     << setw(20) << left << rule.getCRule(rbuf, nrulechain)\
 					     << setw(30) << left << getCLenta(lbuf, lenta_position)\
@@ -24,7 +24,7 @@ using namespace std;
 #define MFST_DIAGN_MAXSIZE	3*ERROR_MAXSIZE_MESSAGE
 #define MFST_DIAGN_NUMBER	3
 #include <stack>
-typedef std::stack<short>	MFSTSTSTACK;			// Стек автомата
+typedef std::stack<short>	MFSTSTSTACK;			// РЎС‚РµРє Р°РІС‚РѕРјР°С‚Р°
 
 namespace MFST
 {
@@ -43,9 +43,9 @@ namespace MFST
 		wchar_t rulefile[PARAMETER_MAX_SIZE];
 		std::ofstream* stream;
 	};
-	static const Rl FIRSTINIT = { L"", NULL };	//для начальной инициализации ID
-	Rl getrul(wchar_t rulefile[]);			 //сформировать структуру ID
-	void WriteData(Rl rl); //время создания
+	static const Rl FIRSTINIT = { L"", NULL };	//РґР»СЏ РЅР°С‡Р°Р»СЊРЅРѕР№ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё ID
+	Rl getrul(wchar_t rulefile[]);			 //СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ СЃС‚СЂСѓРєС‚СѓСЂСѓ ID
+	void WriteData(Rl rl); //РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ
 	struct Mfst
 	{
 		enum RC_STEP

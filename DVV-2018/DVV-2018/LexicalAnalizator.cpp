@@ -37,6 +37,10 @@ namespace LA
 				{
 					newflag = true;
 				}
+				if (LEX_APOS == buffer[0] && LEX_SPACE == inText[i])
+				{
+					continue;
+				}
 				if (inText[i] == LEX_POINT || inText[i] == LEX_LEFTHESIS || inText[i] == LEX_RIGHTHESIS || inText[i] == LEX_RIGHTBRACE || inText[i] == LEX_LEFTBRACE || inText[i] == LEX_COMMA)
 				{
 					newbuf[0] = buffer[sizeofbuf-1];

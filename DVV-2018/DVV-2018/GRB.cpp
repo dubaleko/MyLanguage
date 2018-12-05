@@ -1,4 +1,4 @@
-#include "pch.h"
+п»ї#include "pch.h"
 #include "stdafx.h"
 #include"Rule.h"
 using namespace GRB;
@@ -9,7 +9,7 @@ namespace GRB
 		nt = new GRBALPHABET[size = psize];
 		int* p = (int*)&s;
 		for (short i = 0; i < psize; i++)
-		nt[i] = (GRBALPHABET)p[i];
+			nt[i] = (GRBALPHABET)p[i];
 	}
 
 	Rule::Rule(GRBALPHABET pnn, int piderror, short psize, Chain c, ...)
@@ -19,7 +19,7 @@ namespace GRB
 		chains = new Chain[size = psize];
 		Chain* p = &c;
 		for (int i = 0; i < size; i++)
-		chains[i] = p[i];
+			chains[i] = p[i];
 	}
 
 	Greibach::Greibach(GRBALPHABET pstartN, GRBALPHABET pstbottom, short psize, Rule r, ...)
@@ -29,7 +29,7 @@ namespace GRB
 		rules = new Rule[size = psize];
 		Rule* p = &r;
 		for (int i = 0; i < size; i++)
-		rules[i] = p[i];
+			rules[i] = p[i];
 	}
 
 	Greibach getGreibach()
@@ -42,9 +42,9 @@ namespace GRB
 		short rc = -1;
 		short k = 0;
 		while (k < size && rules[k].nn != pnn)
-		k++;
+			k++;
 		if (k < size)
-		prule = rules[rc = k];
+			prule = rules[rc = k];
 		return rc;
 	}
 
@@ -52,11 +52,11 @@ namespace GRB
 	{
 		Rule rc;
 		if (n < size)
-		rc = rules[n];
+			rc = rules[n];
 		return rc;
 	}
 
-	char* Rule::getCRule(char* b, short nchain)					// Получить правило в виде N -> цепочка
+	char* Rule::getCRule(char* b, short nchain)					// РџРѕР»СѓС‡РёС‚СЊ РїСЂР°РІРёР»Рѕ РІ РІРёРґРµ N -> С†РµРїРѕС‡РєР°
 	{
 		char bchain[200];
 		b[0] = Chain::alphabet_to_char(nn);
@@ -72,17 +72,17 @@ namespace GRB
 	{
 		short rc = -1;
 		while (j < size && chains[j].nt[0] != t)
-		++j;
+			++j;
 		rc = (j < size ? j : -1);
 		if (rc >= 0)
-		pchain = chains[rc];
+			pchain = chains[rc];
 		return rc;
 	}
 
-	char* Rule::Chain::getCChain(char* b)					// Получить первую стороку правила
+	char* Rule::Chain::getCChain(char* b)					// РџРѕР»СѓС‡РёС‚СЊ РїРµСЂРІСѓСЋ СЃС‚РѕСЂРѕРєСѓ РїСЂР°РІРёР»Р°
 	{
 		for (int i = 0; i < size; i++)
-		b[i] = Chain::alphabet_to_char(nt[i]);
+			b[i] = Chain::alphabet_to_char(nt[i]);
 		b[size] = 0x00;
 		return b;
 	}
