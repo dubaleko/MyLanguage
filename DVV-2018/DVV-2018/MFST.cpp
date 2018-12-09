@@ -236,7 +236,7 @@ namespace MFST
 			errid = grebach.getRule(diagnosis[n].nrule).iderror;
 			Error::ERROR err = Error::geterror(errid, ERROR_ZERO_LINE, ERROR_ZERO_COL);
 			/*cout << "Ошибка " << err.id << ":" << err.message<< " строка " << lexTable.table[lpos].sn << endl ;*/
-			throw ERROR_THROW(err.id, lexTable.table[lpos].sn, err.inext.column);
+			throw ERROR_THROW(err.id, lexTable.table[lpos].sn, lexTable.table[lpos].indxTI);
 			rc = buf;
 		}
 		return rc;

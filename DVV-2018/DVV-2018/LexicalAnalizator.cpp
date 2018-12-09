@@ -10,9 +10,11 @@ namespace LA
 		bool proverka = false;
 		bool newflag = false;
 		bool secondflag = false;
+		bool flag = false;
 		char string[5] = "LTR ";
 		char buffer[LT_MAXSIZE];
 		char newbuf[LT_MAXSIZE];
+		char anotherbuf[LT_MAXSIZE];
 		LEX::LexTable* ltable;
 		ID::IdTable* itable;
 		ID::IDDATATYPE dataType;
@@ -68,7 +70,7 @@ namespace LA
 				FST::FST fstint(buffer, FST_INTEGER);
 				if (FST::execute(fstint))
 				{
-					LEX::Entry lEntry = { LEX_INTEGER , line };
+					LEX::Entry lEntry = { LEX_INTEGER , line, col };
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::INT;
 					idType = ID::V;
@@ -77,7 +79,7 @@ namespace LA
 				FST::FST fststr(buffer, FST_STRING);
 				if (FST::execute(fststr))
 				{
-					LEX::Entry lEntry = { LEX_STRING, line };
+					LEX::Entry lEntry = { LEX_STRING, line, col };
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::STR;
 					idType = ID::V;
@@ -86,7 +88,7 @@ namespace LA
 				FST::FST fstbool(buffer, FST_BOOL);
 				if (FST::execute(fstbool))
 				{
-					LEX::Entry lEntry = { LEX_BOOL, line };
+					LEX::Entry lEntry = { LEX_BOOL, line, col };
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::BOOL;
 					idType = ID::V;
@@ -95,7 +97,7 @@ namespace LA
 				FST::FST fstret(buffer, FST_RETURN);
 				if (FST::execute(fstret))
 				{
-					LEX::Entry lEntry = { LEX_RETURN, line };
+					LEX::Entry lEntry = { LEX_RETURN, line, col };
 					LEX::Add(*ltable, lEntry);
 					idType = ID::V;
 					goto link;
@@ -103,7 +105,7 @@ namespace LA
 				FST::FST fstprint(buffer, FST_PRINT);
 				if (FST::execute(fstprint))
 				{
-					LEX::Entry lEntry = { LEX_PRINT, line };
+					LEX::Entry lEntry = { LEX_PRINT, line, col };
 					LEX::Add(*ltable, lEntry);
 					idType = ID::V;
 					goto link;
@@ -111,47 +113,51 @@ namespace LA
 				FST::FST fstdvv(buffer, FST_DVV);
 				if (FST::execute(fstdvv))
 				{
-					LEX::Entry lEntry = { LEX_DVV, line };
+					LEX::Entry lEntry = { LEX_DVV, line, col };
 					LEX::Add(*ltable, lEntry);
+					SA::OneDvv(*ltable, flag);
+					flag = true;
 					goto link;
 				}
 				FST::FST fstif(buffer, FST_IF);
 				if (FST::execute(fstif))
 				{
-					LEX::Entry lEntry = { LEX_IF, line };
+					LEX::Entry lEntry = { LEX_IF, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fstelse(buffer, FST_ELSE);
 				if (FST::execute(fstelse))
 				{
-					LEX::Entry lEntry = { LEX_ELSE, line };
+					LEX::Entry lEntry = { LEX_ELSE, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fststrlen(buffer, FST_STRLEN);
 				if (FST::execute(fststrlen))
 				{
-					LEX::Entry lEntry = { LEX_FUNCTION, line };
+					LEX::Entry lEntry = { LEX_FUNCTION, line, col, 1 };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fstsubstr(buffer, FST_SUBSTR);
 				if (FST::execute(fstsubstr))
 				{
-					LEX::Entry lEntry = { LEX_FUNCTION, line };
+					LEX::Entry lEntry = { LEX_FUNCTION, line, col, 2 };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST  fstlitbool(buffer, FST_BOOLLIT);
 				if (FST::execute(fstlitbool))
 				{
-					LEX::Entry lEntry = { LEX_LITERAL, line };
+					LEX::Entry lEntry = { LEX_LITERAL, line,col };
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::BOOL;
 					iEntry.idtype = ID::L;
+					SA::BoolLT(*ltable, iEntry.iddatatype);
+					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype);
 					strcpy(iEntry.value.vbool, buffer);
 					for (int i = 0; i < itable->size; i++)
 					{
@@ -172,9 +178,11 @@ namespace LA
 				FST::FST fstid(buffer, FST_ID);
 				if (FST::execute(fstid))
 				{
-					LEX::Entry lEntry = { LEX_ID, line };
+					LEX::Entry lEntry = { LEX_ID, line, col };
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
+					strcpy(anotherbuf, buffer);
+					SA::TypeofData(*ltable, *itable, anotherbuf);
 					bool isExecute = false;
 					for (int i = 0; i <= (*itable).size; i++)
 					{
@@ -199,12 +207,15 @@ namespace LA
 				FST::FST fstintlit(buffer, FST_INTLIT);
 				if (FST::execute(fstintlit))
 				{
-					LEX::Entry lEntry = { LEX_LITERAL, line };
+					LEX::Entry lEntry = { LEX_LITERAL, line, col };
 					LEX::Add(*ltable, lEntry);
+					SA::ZeroDivision(*ltable, buffer);
 					ID::Entry iEntry;
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::INT;
 					iEntry.idtype = ID::L;
+					SA::BoolLT(*ltable, iEntry.iddatatype);
+					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype);
 					long double bufNum = std::atoi(buffer);
 					if (bufNum > INT_MAX)
 					throw ERROR_THROW(121, line, col);
@@ -228,12 +239,14 @@ namespace LA
 				FST::FST fststrlit(buffer, FST_STRLIT);
 				if (FST::execute(fststrlit))
 				{
-					LEX::Entry lEntry = { LEX_LITERAL, line };
+					LEX::Entry lEntry = { LEX_LITERAL, line, col };
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::STR;
 					iEntry.idtype = ID::L;
+					SA::BoolLT(*ltable,iEntry.iddatatype);
+					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype);
 					if (strlen(buffer) > 255)
 					throw ERROR_THROW(120, line, col);
 					iEntry.value.vstr->len = strlen(buffer);
@@ -258,98 +271,98 @@ namespace LA
 				FST::FST fstpoint(buffer, FST_POINT);
 				if (FST::execute(fstpoint))
 				{
-					LEX::Entry lEntry = { LEX_POINT, line };
+					LEX::Entry lEntry = { LEX_POINT, line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstcomma(buffer, FST_COMMA);
 				if (FST::execute(fstcomma))
 				{
-					LEX::Entry lEntry = { LEX_COMMA, line };
+					LEX::Entry lEntry = { LEX_COMMA, line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstlbrace(buffer, FST_LEFTBRACE);
 				if (FST::execute(fstlbrace))
 				{
-					LEX::Entry lEntry = { LEX_LEFTBRACE, line };
+					LEX::Entry lEntry = { LEX_LEFTBRACE, line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstrbrace(buffer, FST_RIGHTBRACE);
 				if (FST::execute(fstrbrace))
 				{
-					LEX::Entry lEntry = { LEX_RIGHTBRACE, line };
+					LEX::Entry lEntry = { LEX_RIGHTBRACE, line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstlthesis(buffer, FST_LEFTHESIS);
 				if (FST::execute(fstlthesis))
 				{
-					LEX::Entry lEntry = { LEX_LEFTHESIS, line };
+					LEX::Entry lEntry = { LEX_LEFTHESIS, line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstrthesis(buffer, FST_RIGHTHESIS);
 				if (FST::execute(fstrthesis))
 				{
-					LEX::Entry lEntry = { LEX_RIGHTHESIS, line };
+					LEX::Entry lEntry = { LEX_RIGHTHESIS, line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstmore(buffer, FST_MORE);
 				if (FST::execute(fstmore))
 				{
-					LEX::Entry lEntry = { LEX_MORE, line };
+					LEX::Entry lEntry = { LEX_MORE, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fstless(buffer, FST_LESS);
 				if (FST::execute(fstless))
 				{
-					LEX::Entry lEntry = { LEX_LESS, line };
+					LEX::Entry lEntry = { LEX_LESS, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fstequally(buffer, FST_EQUALLY);
 				if (FST::execute(fstequally))
 				{
-					LEX::Entry lEntry = { LEX_EQUALLY, line };
+					LEX::Entry lEntry = { LEX_EQUALLY, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fstcompare(buffer, FST_COMPARE);
 				if (FST::execute(fstcompare))
 				{
-					LEX::Entry lEntry = { LEX_COMPARE, line };
+					LEX::Entry lEntry = { LEX_COMPARE, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fstplus(buffer, FST_PLUS);
 				if (FST::execute(fstplus))
 				{
-				   LEX::Entry lEntry = { LEX_PLUS, line };
+				   LEX::Entry lEntry = { LEX_PLUS, line, col };
 				   LEX::Add(*ltable, lEntry);
 				   goto link;
 				}
 				FST::FST fstminus(buffer, FST_MINUS);
 				if (FST::execute(fstminus))
 				{
-					LEX::Entry lEntry = { LEX_MINUS, line };
+					LEX::Entry lEntry = { LEX_MINUS, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fststar(buffer, FST_STAR);
 				if (FST::execute(fststar))
 				{
-					LEX::Entry lEntry = { LEX_STAR, line };
+					LEX::Entry lEntry = { LEX_STAR, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fstslash(buffer, FST_DIRSLASH);
 				if (FST::execute(fstslash))
 				{
-					LEX::Entry lEntry = { LEX_DIRSLASH, line };
+					LEX::Entry lEntry = { LEX_DIRSLASH, line, col };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -360,42 +373,42 @@ namespace LA
 				FST::FST fstp(newbuf, FST_POINT);
 				if (FST::execute(fstp))
 				{
-					LEX::Entry lEntry = { LEX_POINT , line };
+					LEX::Entry lEntry = { LEX_POINT , line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstlft(newbuf, FST_LEFTHESIS);
 				if (FST::execute(fstlft))
 				{
-					LEX::Entry lEntry = { LEX_LEFTHESIS , line };
+					LEX::Entry lEntry = { LEX_LEFTHESIS , line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstrft(newbuf, FST_RIGHTHESIS);
 				if (FST::execute(fstrft))
 				{
-					LEX::Entry lEntry = { LEX_RIGHTHESIS , line };
+					LEX::Entry lEntry = { LEX_RIGHTHESIS , line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstrb(newbuf, FST_RIGHTBRACE);
 				if (FST::execute(fstrb))
 				{
-					LEX::Entry lEntry = { LEX_RIGHTBRACE , line };
+					LEX::Entry lEntry = { LEX_RIGHTBRACE , line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstlb(newbuf, FST_LEFTBRACE);
 				if (FST::execute(fstlb))
 				{
-					LEX::Entry lEntry = { LEX_LEFTBRACE , line };
+					LEX::Entry lEntry = { LEX_LEFTBRACE , line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
 				FST::FST fstc(newbuf, FST_COMMA);
 				if (FST::execute(fstc))
 				{
-					LEX::Entry lEntry = { LEX_COMMA, line };
+					LEX::Entry lEntry = { LEX_COMMA, line, col };
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}

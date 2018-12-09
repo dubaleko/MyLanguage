@@ -40,6 +40,7 @@ namespace LEX
 		char lexema;
 		int sn;//номер строки в тексте
 		int indxTI;//индекс в таблице идентификаторов или LT_TI_NULLIDX
+		int parm; // количество параметров в функции
 	};
 
 	struct LexTable//экземпяр таблицы лексем

@@ -21,4 +21,5 @@ using namespace std;
 #include "LexicalAnalizator.h"
 #include "GRB.h"
 #include "MFST.h"
+#include"Semantic.h"
 

@@ -1,6 +1,6 @@
 dvv
 [
-integer x : 20.
+integer x : 20. 
 integer y : 10.
 integer l,z,q,w,m. 
 string  str : 'mystring'. 

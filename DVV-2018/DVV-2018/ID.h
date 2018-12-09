@@ -11,7 +11,7 @@ namespace ID
 {
 	enum IDDATATYPE
 	{
-		INT = 1, STR, BOOL //типы данных идентификаторов
+		INT = 1,STR,BOOL //типы данных идентификаторов
 	};
 	enum IDTYPE
 	{
