@@ -156,8 +156,6 @@ namespace LA
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::BOOL;
 					iEntry.idtype = ID::L;
-					SA::BoolLT(*ltable, iEntry.iddatatype);
-					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype);
 					strcpy(iEntry.value.vbool, buffer);
 					for (int i = 0; i < itable->size; i++)
 					{
@@ -173,6 +171,9 @@ namespace LA
 					{
 						ID::Add(*itable, iEntry);
 					}
+					SA::BoolLT(*ltable, *itable, ID::BOOL, buffer, 0, line);
+					SA::TypeofParameters(*ltable, *itable, ID::BOOL, buffer, 0, line);
+					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line, col);
 					goto link;
 				}
 				FST::FST fstid(buffer, FST_ID);
@@ -182,7 +183,6 @@ namespace LA
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
 					strcpy(anotherbuf, buffer);
-					SA::TypeofData(*ltable, *itable, anotherbuf);
 					bool isExecute = false;
 					for (int i = 0; i <= (*itable).size; i++)
 					{
@@ -202,6 +202,9 @@ namespace LA
 						iEntry.idxfirstLE = line;
 						ID::Add(*itable, iEntry);
 					}
+					/*SA::Inicial(*ltable, *itable, anotherbuf, dataType, line, col);*/
+					SA::BoolLT(*ltable, *itable, dataType, buffer, 1, line);
+					SA::TypeofParameters(*ltable, *itable, dataType, buffer, 1, line);
 					goto link;
 				}
 				FST::FST fstintlit(buffer, FST_INTLIT);
@@ -214,8 +217,6 @@ namespace LA
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::INT;
 					iEntry.idtype = ID::L;
-					SA::BoolLT(*ltable, iEntry.iddatatype);
-					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype);
 					long double bufNum = std::atoi(buffer);
 					if (bufNum > INT_MAX)
 					throw ERROR_THROW(121, line, col);
@@ -234,6 +235,9 @@ namespace LA
 					{
 					  ID::Add(*itable, iEntry);
 					}
+					SA::BoolLT(*ltable, *itable, ID::INT, buffer, 0, line);
+					SA::TypeofParameters(*ltable, *itable, ID::INT, buffer, 0, line);
+					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line , col);
 					goto link;
 				}
 				FST::FST fststrlit(buffer, FST_STRLIT);
@@ -245,8 +249,6 @@ namespace LA
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::STR;
 					iEntry.idtype = ID::L;
-					SA::BoolLT(*ltable,iEntry.iddatatype);
-					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype);
 					if (strlen(buffer) > 255)
 					throw ERROR_THROW(120, line, col);
 					iEntry.value.vstr->len = strlen(buffer);
@@ -266,6 +268,9 @@ namespace LA
 					{
 					  ID::Add(*itable, iEntry);
 					}
+					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line , col);
+					SA::BoolLT(*ltable, *itable, ID::STR, buffer, 0, line);
+					SA::TypeofParameters(*ltable, *itable, ID::STR, buffer, 0, line);
 					goto link;
 				}
 				FST::FST fstpoint(buffer, FST_POINT);

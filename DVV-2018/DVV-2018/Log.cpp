@@ -14,10 +14,6 @@ namespace Log
 		log.stream = FILE;
 		return log;
 	}
-	void WriteLine(LOG log, char* txt)
-	{
-		*log.stream << txt << endl;
-	}
 	void WriteData(LOG log)
 	{
 		char Date[50];

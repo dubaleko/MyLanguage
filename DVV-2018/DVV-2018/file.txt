@@ -2,22 +2,19 @@ dvv
 [
 integer x : 20. 
 integer y : 10.
-integer l,z,q,w,m. 
 string  str : 'mystring'. 
 string  mystr : 'mynewstring'.
-bool mb.
-mb : false.
-if (x > y)
+bool mb : false.
+if (mb)
 [
-integer p.
-p : x + y. 
+bool p : x > y.
 print (p). 
 ]
 else
 [
-l : strlen(str). 
+integer l : strlen(str). 
 ]
-print (mb). 
+print (l). 
 z : (x + y) * (x - y).  
 bool nb : substr(mystr,str).
 print (mystr).

@@ -10,7 +10,6 @@ namespace Log
 	};
 	static const LOG FIRSTINIT = { L"", NULL };			//для начальной инициализации LOG
 	LOG getlog(wchar_t logfile[]);						//сформировать структуру LOG
-	void WriteLine(LOG log, char* c);				    //вывести в протокол строку
 	void WriteData(LOG);								//вывеси дату в заголовок	
 	void WriteParm(LOG, Parameter::PARAMETER);		    //вывести информацию о входных параметрах
 	void WriteIn(LOG, In::IN);							//инфу о входном файле

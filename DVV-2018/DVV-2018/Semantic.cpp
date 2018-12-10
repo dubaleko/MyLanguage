@@ -7,19 +7,7 @@ namespace SA
 	{
 		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
 		{
-			if (ltable.table[i].lexema == LEX_LITERAL && ltable.table[i - 1].lexema == LEX_DIRSLASH && strcmp(literal,"0") == 0 )
-			{
-				throw ERROR_THROW(705, ltable.table[i].sn, ltable.table[i].indxTI);
-			}
-		}
-	}
-
-	void BoolLT(LEX::LexTable& ltable, ID::IDDATATYPE datatype)
-	{
-		bool flag = false;
-		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
-		{
-			if (ltable.table[i - 2].lexema == LEX_IF && ltable.table[i].lexema == LEX_LITERAL  && datatype !=ID::BOOL)
+			if (ltable.table[i].lexema == LEX_LITERAL && ltable.table[i - 1].lexema == LEX_DIRSLASH && strcmp(literal, "0") == 0)
 			{
 				throw ERROR_THROW(704, ltable.table[i].sn, ltable.table[i].indxTI);
 			}
@@ -30,35 +18,15 @@ namespace SA
 		int k = 0;
 		if (flag)
 		{
-		  k = 1;
-	    }
+			k = 1;
+		}
 		if (k == 1)
 		{
 			for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
 			{
 				if (ltable.table[i].lexema == LEX_DVV)
 				{
-					throw ERROR_THROW(706, ltable.table[i].sn, ltable.table[i].indxTI);
-				}
-			}
-		}
-	}
-	void Inicial(LEX::LexTable& ltable, ID::IdTable& itable, char* buf, ID::IDDATATYPE dtype)
-	{
-		ID::IDDATATYPE dataType;
-		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
-		{
-			if(ltable.table[i].lexema == LEX_LITERAL && ltable.table[i-2].lexema == LEX_ID && ltable.table[i-1].lexema == LEX_COMPARE )
-			for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
-			{
-				if (strcmp(buf, itable.table[j].id) == 0)
-				{
-					dataType = itable.table[j].iddatatype;
-					if (dataType != dtype)
-					{
-						throw ERROR_THROW(702, ltable.table[i].sn, ltable.table[i].indxTI);
-					}
-					break;
+					throw ERROR_THROW(705, ltable.table[i].sn, ltable.table[i].indxTI);
 				}
 			}
 		}
@@ -71,16 +39,16 @@ namespace SA
 		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
 		{
 			if (ltable.table[i].lexema == LEX_FUNCTION)
-			{ 
-			 flag = true;
-			 m = i;
-			 k = 0;
+			{
+				flag = true;
+				m = i;
+				k = 0;
 			}
 			if (flag)
 			{
 				while (ltable.table[i].lexema != LEX_POINT)
 				{
-					if (ltable.table[i].lexema == LEX_ID  || ltable.table[i].lexema == LEX_LITERAL)
+					if (ltable.table[i].lexema == LEX_ID || ltable.table[i].lexema == LEX_LITERAL)
 					{
 						k++;
 					}
@@ -94,27 +62,101 @@ namespace SA
 			}
 		}
 	}
-	void TypeofData(LEX::LexTable& ltable, ID::IdTable& itable, char* buffer)
+	void TypeofParameters(LEX::LexTable& ltable, ID::IdTable& itable, ID::IDDATATYPE datatype, char* buffer, int x, int y)
 	{
-		ID::IDDATATYPE dataType;
+		bool flag = false;
+		int k = 0;
+		int n = 0;
 		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
 		{
-			if (ltable.table[i].lexema == LEX_FUNCTION )
+			if (ltable.table[i].lexema == LEX_FUNCTION)
+			{
+				k = ltable.table[i].sn;
+				n = ltable.table[i].indxTI;
+				if (k == y)
+				flag = true;
+				break;
+			}
+		}
+		if (flag)
+		{
+			if (x == 0)
+			{
+				for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
+				{
+					if (datatype !=  ID::STR)
+					{
+					  throw ERROR_THROW(700, k, n);
+					}
+				}
+			}
+			if (x == 1)
 			{
 				for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
 				{
 					if (strcmp(buffer, itable.table[j].id) == 0)
 					{
-						dataType = itable.table[j].iddatatype;
-						if (dataType != ID::STR)
-						{
-							throw ERROR_THROW(700, ltable.table[i].sn, ltable.table[i].indxTI);
-						}
-						break;
+						if (itable.table[j].iddatatype != ID::STR)
+						throw ERROR_THROW(700, k, n);
 					}
 				}
 			}
 		}
 	}
-
+	void BoolLT(LEX::LexTable& ltable, ID::IdTable& itable, ID::IDDATATYPE datatype, char* buffer, int x, int y)
+	{
+		bool flag = false;
+		int k = 0;
+		int n = 0;
+		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
+		{
+			if (ltable.table[i].lexema == LEX_IF)
+			{
+				k = ltable.table[i].sn;
+				n = ltable.table[i].indxTI;
+				if (k == y)
+				flag = true;
+				break;
+			}
+		}
+		if (flag)
+		{
+			if (x == 0)
+			{
+				for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
+				{
+					if (datatype != ID::BOOL)
+					{
+						throw ERROR_THROW(703, k, n);
+					}
+				}
+			}
+			if (x == 1)
+			{
+				for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
+				{
+					if (strcmp(buffer, itable.table[j].id) == 0)
+					{
+						if (itable.table[j].iddatatype != ID::BOOL)
+							throw ERROR_THROW(703, k, n);
+					}
+				}
+			}
+		}
+	}
+  void Inicial(LEX::LexTable& ltable, ID::IdTable& itable, char* buf, ID::IDDATATYPE dtype, int line , int col)
+  {
+	ID::IDDATATYPE dataType;
+	for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
+	{
+	   if (strcmp(buf, itable.table[j].id) == 0)
+	   {
+		 dataType = itable.table[j].iddatatype;
+		 if (dataType != dtype)
+		 {
+		 throw ERROR_THROW(702, line, col);
+		 }
+	   }
+	}
+  }
 }
