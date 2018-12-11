@@ -150,7 +150,8 @@ namespace LA
 				FST::FST  fstlitbool(buffer, FST_BOOLLIT);
 				if (FST::execute(fstlitbool))
 				{
-					LEX::Entry lEntry = { LEX_LITERAL, line,col };
+					LEX::Entry lEntry = { LEX_LITERAL, line, col };
+					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
 					strcpy(iEntry.id, string);
@@ -171,15 +172,14 @@ namespace LA
 					{
 						ID::Add(*itable, iEntry);
 					}
-					SA::BoolLT(*ltable, *itable, ID::BOOL, buffer, 0, line);
-					SA::TypeofParameters(*ltable, *itable, ID::BOOL, buffer, 0, line);
 					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line, col);
 					goto link;
 				}
 				FST::FST fstid(buffer, FST_ID);
 				if (FST::execute(fstid))
 				{
-					LEX::Entry lEntry = { LEX_ID, line, col };
+					LEX::Entry lEntry = { LEX_ID, line, col};
+					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
 					strcpy(anotherbuf, buffer);
@@ -202,22 +202,20 @@ namespace LA
 						iEntry.idxfirstLE = line;
 						ID::Add(*itable, iEntry);
 					}
-					/*SA::Inicial(*ltable, *itable, anotherbuf, dataType, line, col);*/
-					SA::BoolLT(*ltable, *itable, dataType, buffer, 1, line);
-					SA::TypeofParameters(*ltable, *itable, dataType, buffer, 1, line);
 					goto link;
 				}
 				FST::FST fstintlit(buffer, FST_INTLIT);
 				if (FST::execute(fstintlit))
 				{
+					long double bufNum = std::atoi(buffer);
 					LEX::Entry lEntry = { LEX_LITERAL, line, col };
+					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					SA::ZeroDivision(*ltable, buffer);
 					ID::Entry iEntry;
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::INT;
 					iEntry.idtype = ID::L;
-					long double bufNum = std::atoi(buffer);
 					if (bufNum > INT_MAX)
 					throw ERROR_THROW(121, line, col);
 					iEntry.value.vint = (int)bufNum;
@@ -235,15 +233,14 @@ namespace LA
 					{
 					  ID::Add(*itable, iEntry);
 					}
-					SA::BoolLT(*ltable, *itable, ID::INT, buffer, 0, line);
-					SA::TypeofParameters(*ltable, *itable, ID::INT, buffer, 0, line);
-					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line , col);
+					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line, col);
 					goto link;
 				}
 				FST::FST fststrlit(buffer, FST_STRLIT);
 				if (FST::execute(fststrlit))
 				{
 					LEX::Entry lEntry = { LEX_LITERAL, line, col };
+					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
 					strcpy(iEntry.id, string);
@@ -268,9 +265,7 @@ namespace LA
 					{
 					  ID::Add(*itable, iEntry);
 					}
-					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line , col);
-					SA::BoolLT(*ltable, *itable, ID::STR, buffer, 0, line);
-					SA::TypeofParameters(*ltable, *itable, ID::STR, buffer, 0, line);
+					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line, col);
 					goto link;
 				}
 				FST::FST fstpoint(buffer, FST_POINT);
@@ -319,6 +314,7 @@ namespace LA
 				if (FST::execute(fstmore))
 				{
 					LEX::Entry lEntry = { LEX_MORE, line, col };
+					lEntry.znak = 2;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -326,6 +322,7 @@ namespace LA
 				if (FST::execute(fstless))
 				{
 					LEX::Entry lEntry = { LEX_LESS, line, col };
+					lEntry.znak = 2;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -333,6 +330,7 @@ namespace LA
 				if (FST::execute(fstequally))
 				{
 					LEX::Entry lEntry = { LEX_EQUALLY, line, col };
+					lEntry.znak = 2;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -347,6 +345,7 @@ namespace LA
 				if (FST::execute(fstplus))
 				{
 				   LEX::Entry lEntry = { LEX_PLUS, line, col };
+				   lEntry.znak = 1;
 				   LEX::Add(*ltable, lEntry);
 				   goto link;
 				}
@@ -354,6 +353,7 @@ namespace LA
 				if (FST::execute(fstminus))
 				{
 					LEX::Entry lEntry = { LEX_MINUS, line, col };
+					lEntry.znak = 1;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -361,6 +361,7 @@ namespace LA
 				if (FST::execute(fststar))
 				{
 					LEX::Entry lEntry = { LEX_STAR, line, col };
+					lEntry.znak = 1;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -368,6 +369,7 @@ namespace LA
 				if (FST::execute(fstslash))
 				{
 					LEX::Entry lEntry = { LEX_DIRSLASH, line, col };
+					lEntry.znak = 1;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
