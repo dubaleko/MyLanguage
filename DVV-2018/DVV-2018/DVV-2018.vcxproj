@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Error.h" />
     <ClInclude Include="FST.h" />
+    <ClInclude Include="Generation.h" />
     <ClInclude Include="graf.h" />
     <ClInclude Include="GRB.h" />
     <ClInclude Include="ID.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="DVV-2018.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="FST.cpp" />
+    <ClCompile Include="Generation.cpp" />
     <ClCompile Include="GRB.cpp" />
     <ClCompile Include="ID.cpp" />
     <ClCompile Include="In.cpp" />

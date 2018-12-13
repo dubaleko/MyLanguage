@@ -66,7 +66,6 @@ namespace SA
 	{
 		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
 		{
-			char* buf[LT_MAXSIZE];
 			if (ltable.table[i].lexema == LEX_FUNCTION && ltable.table[i].parm == 1)
 			{
 				if (ltable.table[i + 2].lexema == LEX_ID)
@@ -228,7 +227,7 @@ namespace SA
 						{
 							if (itable.table[j].iddatatype != ID::INT)
 							{
-								throw ERROR_THROW(707, ltable.table[i].sn, ltable.table[i - 1].indxTI);
+								throw ERROR_THROW(707, ltable.table[i].sn, ltable.table[i].indxTI);
 							}
 						}
 					}
@@ -241,7 +240,6 @@ namespace SA
 		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
 		{
 			char* buf[LT_MAXSIZE];
-			ID::IDDATATYPE data[LT_MAXSIZE];
 			int k = 0;
 			int z = 0;
 			if (ltable.table[i].lexema == LEX_LITERAL && ltable.table[i - 1].znak == 1 || ltable.table[i + 1].znak == 1)
@@ -295,14 +293,14 @@ namespace SA
 						{
 							if (itable.table[j].iddatatype != ID::INT)
 							{
-								throw ERROR_THROW(707, ltable.table[i].sn, ltable.table[i - 1].indxTI);
+								throw ERROR_THROW(707, ltable.table[i].sn, ltable.table[i].indxTI);
 							}
 						}
 						if (strcmp(buf[l], itable.table[j].value.vbool) == 0)
 						{
 							if (itable.table[j].iddatatype != ID::INT)
 							{
-								throw ERROR_THROW(707, ltable.table[i].sn, ltable.table[i - 1].indxTI);
+								throw ERROR_THROW(707, ltable.table[i].sn, ltable.table[i].indxTI);
 							}
 						}
 					}
@@ -378,7 +376,7 @@ namespace SA
 				{
 					if (data[m] != datatype)
 					{
-						throw ERROR_THROW(702, ltable.table[i].sn, ltable.table[i - 2].indxTI);
+						throw ERROR_THROW(702, ltable.table[i].sn, ltable.table[i].indxTI);
 					}
 				}
 			}
@@ -387,26 +385,92 @@ namespace SA
 	}
 	void Inicial(LEX::LexTable& ltable, ID::IdTable& itable, char* buf, ID::IDDATATYPE dtype, int line, int col)
 	{
+		bool flag = false;
 		ID::IDDATATYPE dataType;
-		for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
-		{
-			for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
+		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
+		{   
+			flag = false;
+			if (ltable.table[i].lexema == LEX_IF && ltable.table[i].sn == line)
 			{
-				if (ltable.table[i].lexema == LEX_IF)
+				flag = true;
+				break;
+			}
+			if (ltable.table[i].lexema == LEX_FUNCTION && ltable.table[i].sn == line)
+			{
+				flag = true;
+				break;
+			}
+		}
+		if (!flag)
+		{
+			for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
+			{
+				if (strcmp(buf, itable.table[j].id) == 0)
 				{
-					if (ltable.table[i].sn == line)
+					dataType = itable.table[j].iddatatype;
+					if (dataType != dtype)
 					{
-						continue;
+						throw ERROR_THROW(702, line, col);
 					}
 				}
-		    }
-			if (strcmp(buf, itable.table[j].id) == 0)
+			}
+		}
+		
+	}
+	void Popytka(LEX::LexTable& ltable)
+	{
+		int kol = 0;
+		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
+		{
+			if (ltable.table[i].lexema == LEX_FUNCTION)
 			{
-				dataType = itable.table[j].iddatatype;
-				if (dataType != dtype)
+				while (ltable.table[i].lexema != LEX_RIGHTHESIS)
 				{
-					throw ERROR_THROW(702, line, col);
+					if (ltable.table[i].lexema == LEX_LITERAL)
+					{
+						kol++;
+				    }
+					i++;
 				}
+				if (kol > 0)
+				{
+					throw ERROR_THROW(708, ltable.table[i].sn, ltable.table[i].indxTI);
+				}
+			}
+		}
+	}
+	void Pereobyavl(LEX::LexTable& ltable, ID::IdTable& itable, char* buf, ID::IDDATATYPE datatype, int line, int col)
+	{
+		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
+		{
+			if (ltable.table[i].lexema == LEX_ID && ltable.table[i - 1].lexema == LEX_STRING && line == ltable.table[i].sn && ltable.table[i].indxTI == col)
+			{
+				for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
+				{
+					if (strcmp(buf, itable.table[j].id) == 0)
+					{
+						throw ERROR_THROW(709, line, col);
+					}
+				}
+			}
+		}
+	}
+	void Proverka(LEX::LexTable& ltable, ID::IdTable& itable)
+	{
+		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
+		{ 
+			int k = 0;
+			if (ltable.table[i].lexema != LEX_INTEGER && ltable.table[i+1].lexema == LEX_ID )
+			{
+				for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
+				{
+					if (strcmp(ltable.table[i+1].buf, itable.table[j].id) == 0)
+					{
+						k++;
+				    }
+				}
+				if (k == 0)
+				throw ERROR_THROW(710, ltable.table[i + 1].sn, ltable.table[i + 1].indxTI);
 			}
 		}
 	}

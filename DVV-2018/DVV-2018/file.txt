@@ -12,10 +12,10 @@ print (p).
 ]
 else
 [
-integer l : strlen(str). 
+integer l : strlen(str).
+print (l).  
 ]
-print (l). 
-z : (x + y) * (x - y).  
+integer z : (m + y) * (x - y).  
 bool nb : substr(mystr,str).
 print (mystr).
 return z. 

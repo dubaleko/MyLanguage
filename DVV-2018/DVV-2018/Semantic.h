@@ -11,4 +11,7 @@ namespace SA
 	void BoolLt(LEX::LexTable& ltable, ID::IdTable& itable);
 	void Operation(LEX::LexTable& ltable, ID::IdTable& itable);
 	void Operationl(LEX::LexTable& ltable, ID::IdTable& itable);
+	void Popytka(LEX::LexTable& ltable);
+	void Pereobyavl(LEX::LexTable& ltable, ID::IdTable& itable, char* buf, ID::IDDATATYPE datatype, int line , int col);
+	void Proverka(LEX::LexTable& ltable, ID::IdTable& itable);
 }

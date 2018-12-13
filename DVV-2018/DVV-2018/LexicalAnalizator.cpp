@@ -184,6 +184,7 @@ namespace LA
 					ID::Entry iEntry;
 					strcpy(anotherbuf, buffer);
 					bool isExecute = false;
+					SA::Pereobyavl(*ltable, *itable, buffer, dataType, line, col);
 					for (int i = 0; i <= (*itable).size; i++)
 					{
 						if (strcmp((*itable).table[i].id, buffer) == 0)
