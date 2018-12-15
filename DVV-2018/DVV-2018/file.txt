@@ -1,22 +1,26 @@
+integer func xz(string str, integer x)
+[
+integer p : strlen(str).
+return p. 
+]
 dvv
 [
 integer x : 10. 
 integer y : 10.
-string  str : 'mystring'. 
+string  str : 'gg'. 
 string  mystr : 'mynewstring'.
 bool mb : false.
-if ( x > y)
+if ( 10 > 15)
 [
-integer p : x + y.
-print (p). 
+integer m : xz(str).
+print (m).
 ]
 else
 [
-integer l : strlen(str).
-print (l).  
-]
-integer z : (m + y) * (x - y).  
 bool nb : substr(mystr,str).
-print (mystr).
-return z. 
+print (nb).
 ]
+integer z : (x + y) * (x - y). 
+print (z).
+]
+

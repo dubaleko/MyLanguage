@@ -11,6 +11,8 @@ namespace LA
 		bool newflag = false;
 		bool secondflag = false;
 		bool flag = false;
+	    char postfix[LT_MAXSIZE];
+		char oldpostfix[LT_MAXSIZE];
 		char string[5] = "LTR ";
 		char buffer[LT_MAXSIZE];
 		char newbuf[LT_MAXSIZE];
@@ -94,6 +96,14 @@ namespace LA
 					idType = ID::V;
 					goto link;
 				}
+				FST::FST fstfunc(buffer, FST_FUNC);
+				if (FST::execute(fstfunc))
+				{
+					LEX::Entry lEntry = { LEX_FUNCTION, line, col };
+					LEX::Add(*ltable, lEntry);
+					idType = ID::F;
+					goto link;
+				}
 				FST::FST fstret(buffer, FST_RETURN);
 				if (FST::execute(fstret))
 				{
@@ -115,6 +125,7 @@ namespace LA
 				{
 					LEX::Entry lEntry = { LEX_DVV, line, col };
 					LEX::Add(*ltable, lEntry);
+					strcpy(postfix, buffer);
 					SA::OneDvv(*ltable, flag);
 					flag = true;
 					goto link;
@@ -136,14 +147,14 @@ namespace LA
 				FST::FST fststrlen(buffer, FST_STRLEN);
 				if (FST::execute(fststrlen))
 				{
-					LEX::Entry lEntry = { LEX_FUNCTION, line, col, 1 };
+					LEX::Entry lEntry = { LEX_LIBFUNC, line, col, 1 };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
 				FST::FST fstsubstr(buffer, FST_SUBSTR);
 				if (FST::execute(fstsubstr))
 				{
-					LEX::Entry lEntry = { LEX_FUNCTION, line, col, 2 };
+					LEX::Entry lEntry = { LEX_LIBFUNC, line, col, 2 };
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -151,12 +162,14 @@ namespace LA
 				if (FST::execute(fstlitbool))
 				{
 					LEX::Entry lEntry = { LEX_LITERAL, line, col };
+					lEntry.znak = -1;
 					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::BOOL;
 					iEntry.idtype = ID::L;
+					strcpy(iEntry.value.vstr->str, buffer);
 					strcpy(iEntry.value.vbool, buffer);
 					for (int i = 0; i < itable->size; i++)
 					{
@@ -178,18 +191,35 @@ namespace LA
 				FST::FST fstid(buffer, FST_ID);
 				if (FST::execute(fstid))
 				{
+					if (strlen(buffer) > 20)
+				    throw ERROR_THROW(122, line, col);
 					LEX::Entry lEntry = { LEX_ID, line, col};
 					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;
 					strcpy(anotherbuf, buffer);
+					if (idType == ID::F) 
+					{
+						  strcpy(postfix , buffer);
+					}
+					strcpy(iEntry.postfix, postfix);
 					bool isExecute = false;
-					SA::Pereobyavl(*ltable, *itable, buffer, dataType, line, col);
+					SA::Pereobyavl(*ltable, *itable, buffer, postfix, line, col);
+					SA::Proverka(*ltable, *itable);
 					for (int i = 0; i <= (*itable).size; i++)
 					{
 						if (strcmp((*itable).table[i].id, buffer) == 0)
 						{
 							isExecute = true;
+							if (itable->table[i].idtype == ID::F)
+							{
+								break;
+							}
+							if (strcmp((*itable).table[i].postfix, iEntry.postfix) != 0)
+							{
+							isExecute = false;
+							}
+
 						}
 					}
 					if (!isExecute)						//если переменная не объявлена
@@ -210,6 +240,7 @@ namespace LA
 				{
 					long double bufNum = std::atoi(buffer);
 					LEX::Entry lEntry = { LEX_LITERAL, line, col };
+					lEntry.znak = bufNum;
 					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					SA::ZeroDivision(*ltable, buffer);
@@ -217,9 +248,12 @@ namespace LA
 					strcpy(iEntry.id, string);
 					iEntry.iddatatype = ID::INT;
 					iEntry.idtype = ID::L;
-					if (bufNum > INT_MAX)
-					throw ERROR_THROW(121, line, col);
+					if (bufNum >= INT_MAX)
+					{
+						throw ERROR_THROW(121, line, col);
+					}
 					iEntry.value.vint = (int)bufNum;
+					strcpy(iEntry.value.vstr->str, buffer);
 					for (int i = 0; i < itable->size; i++)
 					{
 						if (iEntry.value.vint == (*itable).table[i].value.vint)
@@ -241,6 +275,7 @@ namespace LA
 				if (FST::execute(fststrlit))
 				{
 					LEX::Entry lEntry = { LEX_LITERAL, line, col };
+					lEntry.znak = -1;
 					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					ID::Entry iEntry;

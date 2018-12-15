@@ -26,6 +26,12 @@
 	FST::NODE(1, FST::RELATION('o', 3)),\
 	FST::NODE(1, FST::RELATION('l', 4)),\
 	FST::NODE()
+#define FST_FUNC 5, \
+    FST::NODE(1, FST::RELATION('f', 1)), \
+    FST::NODE(1, FST::RELATION('u', 2)), \
+    FST::NODE(1, FST::RELATION('n', 3)), \
+    FST::NODE(1, FST::RELATION('c', 4)), \
+    FST::NODE()
 
 #define FST_RETURN 7, \
 	FST::NODE(1, FST::RELATION('r', 1)),\

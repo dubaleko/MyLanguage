@@ -15,14 +15,15 @@ namespace ID
 	};
 	enum IDTYPE
 	{
-		V = 1, L //тип идентификатора(переменная, литерал)
+		V = 1, L , F //тип идентификатора(переменная, литерал)
 	};
 	struct Entry
 	{
 		short idxfirstLE;//индекс первой строки в таблице лексем
 		char id[ID_MAXSIZE * 2];//идентификатор(автоматически усекается до ID_MAXSIZE)
+		char postfix[ID_MAXSIZE];
 		IDDATATYPE iddatatype;//тип данных
-		IDTYPE idtype;//тип идентификатора
+		IDTYPE idtype;//тип идентификатора.
 		union
 		{
 			char vbool[6];
