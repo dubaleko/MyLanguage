@@ -185,7 +185,6 @@ namespace LA
 					{
 						ID::Add(*itable, iEntry);
 					}
-					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line, col);
 					goto link;
 				}
 				FST::FST fstid(buffer, FST_ID);
@@ -268,7 +267,6 @@ namespace LA
 					{
 					  ID::Add(*itable, iEntry);
 					}
-					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line, col);
 					goto link;
 				}
 				FST::FST fststrlit(buffer, FST_STRLIT);
@@ -301,7 +299,6 @@ namespace LA
 					{
 					  ID::Add(*itable, iEntry);
 					}
-					SA::Inicial(*ltable, *itable, anotherbuf, iEntry.iddatatype, line, col);
 					goto link;
 				}
 				FST::FST fstpoint(buffer, FST_POINT);

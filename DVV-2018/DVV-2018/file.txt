@@ -1,4 +1,4 @@
-integer func xz(string str, integer x)
+integer func xz(string str)
 [
 integer p : strlen(str).
 return p. 
@@ -7,7 +7,7 @@ dvv
 [
 integer x : 10. 
 integer y : 10.
-string  str : 'gg'. 
+string  str : 'str'. 
 string  mystr : 'mynewstring'.
 bool mb : false.
 if ( 10 > 15)

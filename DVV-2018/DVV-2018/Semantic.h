@@ -11,7 +11,7 @@ namespace SA
 	void Pereobyavl(LEX::LexTable& ltable, ID::IdTable& itable, char* buf, char* post, int line, int col);
 	void RetValue(LEX::LexTable& ltable, ID::IdTable& itable);
 	void InicialId(LEX::LexTable& ltable, ID::IdTable& itable);
-	void Inicial(LEX::LexTable& ltable, ID::IdTable& itable, char* buf, ID::IDDATATYPE dtype, int line, int col);
+	void InicialL(LEX::LexTable& ltable, ID::IdTable& itable);
 	void Parametrs(LEX::LexTable& ltable);
 	void TypeofParameters(LEX::LexTable& ltable, ID::IdTable& itable);
 }
