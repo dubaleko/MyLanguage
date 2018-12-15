@@ -41,7 +41,7 @@ namespace ID
 		ofstream *FILE = new ofstream;
 		(*FILE).open(idfile);
 		if (!(*FILE).is_open())
-			throw ERROR_THROW(108, ERROR_ZERO_LINE, ERROR_ZERO_COL);
+		throw ERROR_THROW(108, ERROR_ZERO_LINE, ERROR_ZERO_COL);
 		id.stream = FILE;
 		return id;
 	}

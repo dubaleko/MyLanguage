@@ -14,4 +14,5 @@ namespace SA
 	void InicialL(LEX::LexTable& ltable, ID::IdTable& itable);
 	void Parametrs(LEX::LexTable& ltable);
 	void TypeofParameters(LEX::LexTable& ltable, ID::IdTable& itable);
+	void TypeofFuncParm(LEX::LexTable& ltable, ID::IdTable& itable);
 }

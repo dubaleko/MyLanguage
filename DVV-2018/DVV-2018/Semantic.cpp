@@ -557,5 +557,76 @@ namespace SA
 			}
 		}
 	}
+	void TypeofFuncParm(LEX::LexTable& ltable, ID::IdTable& itable)
+	{
+		ID::IDDATATYPE data[LT_MAXSIZE];
+		ID::IDDATATYPE newdata[LT_MAXSIZE];
+		int m = 0, n = 0, z = 0, o = 0;
+		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
+		{
+			if (ltable.table[i].lexema == LEX_ID && ltable.table[i - 1].lexema == LEX_FUNCTION)
+			{
+				while (ltable.table[i].lexema != LEX_RIGHTHESIS)
+				{
+					if (ltable.table[i].lexema == LEX_ID)
+					{
+						for (unsigned int j = 0; j < (unsigned int)ltable.size; j++)
+						{
+							if (strcmp(ltable.table[i].buf , itable.table[j].id) == 0)
+							{
+								data[m] = itable.table[j].iddatatype;
+								m++;
+							}
+						}
+				    }
+					i++;
+				}
+			}
+			if (ltable.table[i].lexema == LEX_ID && ltable.table[i+1].lexema == LEX_LEFTHESIS)
+			{
+				o = ltable.table[i].indxTI;
+				for (unsigned int l = 0; l < (unsigned int)itable.size; l++)
+				{
+					if (strcmp(ltable.table[i].buf , itable.table[l].id) == 0 )
+					{
+						while (ltable.table[i].lexema != LEX_RIGHTHESIS)
+						{
+							if (ltable.table[i].lexema == LEX_ID)
+							{
+								for (unsigned int q = 0; q< (unsigned int)itable.size; q++)
+								{
+									if (strcmp(ltable.table[i].buf, itable.table[q].id) == 0)
+									{
+										newdata[n] = itable.table[q].iddatatype;
+										n++;
+									}
+								}
+							}
+							if (ltable.table[i].lexema == LEX_LITERAL)
+							{
+								for (unsigned int y = 0; y < (unsigned int)itable.size; y++)
+								{
+									if (strcmp(ltable.table[i].buf, itable.table[y].value.vstr->str) == 0)
+									{
+										newdata[n] = itable.table[y].iddatatype;
+										n++;
+									}
+								}
+							}
+							i++;
+						}
+					}
+				}
+				while (z < n)
+				{
+					if (data[z] != newdata[z])
+					{
+						throw ERROR_THROW(700, ltable.table[i].sn, o);
+					}
+					z++;
+				}
+			}
+		}
+	}
 }
 

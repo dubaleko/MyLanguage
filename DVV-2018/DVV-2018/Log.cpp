@@ -47,13 +47,7 @@ namespace Log
 	}
 	void WriteError(LOG log, Error::ERROR e)
 	{
-		if (!log.stream)
-			cout << "Ошибка " << e.id << ": " << e.message << endl << "Строка: " << e.inext.line << ", символ: " << e.inext.column << endl << endl;
-		else
-		{
-			cout << "Ошибка " << e.id << ": " << e.message << endl << "Строка: " << e.inext.line << ", символ: " << e.inext.column << endl << endl;
-			*log.stream << "Ошибка " << e.id << ": " << e.message << endl << "Строка: " << e.inext.line << ", символ: " << e.inext.column << endl;
-		}
+	  cout << "Ошибка " << e.id << ": " << e.message << endl << "Строка: " << e.inext.line << ", символ: " << e.inext.column << endl << endl;
 	}
 	void Close(LOG log)
 	{

@@ -22,4 +22,5 @@ using namespace std;
 #include "GRB.h"
 #include "MFST.h"
 #include"Semantic.h"
+#include"Generation.h"
 

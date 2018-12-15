@@ -6,7 +6,7 @@ namespace Parameter
 	PARAMETER getparametr(int argc, _TCHAR* argv[])									//argc - по умолчанию единица
 	{
 		PARAMETER Parametr;
-		wchar_t in[PARAMETER_MAX_SIZE], log[PARAMETER_MAX_SIZE], id[PARAMETER_MAX_SIZE], lx[PARAMETER_MAX_SIZE], rl[PARAMETER_MAX_SIZE];
+		wchar_t in[PARAMETER_MAX_SIZE], log[PARAMETER_MAX_SIZE], id[PARAMETER_MAX_SIZE], lx[PARAMETER_MAX_SIZE], rl[PARAMETER_MAX_SIZE], cs[PARAMETER_MAX_SIZE];
 		if (argc == 1)
 		throw ERROR_THROW(100,ERROR_ZERO_LINE,ERROR_ZERO_COL);
 		wchar_t *parameterIn = wcsstr(argv[1], PARAMETER_IN);	// parameterIn - указатель на первое вхождение строки PARM_IN в строку argv[1], или пустой указатель
@@ -32,6 +32,11 @@ namespace Parameter
 			wcscpy_s(rl , in);
 			wcscat_s(rl, PARAMETER_MAX_SIZE, PARAMETER_RULE_FILE_EXTENSION);
 			wcscpy_s(Parametr.rl, rl);
+
+			wcscpy_s(cs, in);
+			wcscat_s(cs, PARAMETER_MAX_SIZE, PARAMETER_CS_FILE_EXTENSION);
+			wcscpy_s(Parametr.cs, cs);
+
 		}
 		else {
 			if (wcslen(argv[3]) > PARAMETER_MAX_SIZE)

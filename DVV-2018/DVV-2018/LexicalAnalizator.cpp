@@ -12,7 +12,6 @@ namespace LA
 		bool secondflag = false;
 		bool flag = false;
 	    char postfix[LT_MAXSIZE];
-		char oldpostfix[LT_MAXSIZE];
 		char string[5] = "LTR ";
 		char buffer[LT_MAXSIZE];
 		char newbuf[LT_MAXSIZE];
@@ -73,6 +72,7 @@ namespace LA
 				if (FST::execute(fstint))
 				{
 					LEX::Entry lEntry = { LEX_INTEGER , line, col };
+					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::INT;
 					idType = ID::V;
@@ -82,6 +82,7 @@ namespace LA
 				if (FST::execute(fststr))
 				{
 					LEX::Entry lEntry = { LEX_STRING, line, col };
+					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::STR;
 					idType = ID::V;
@@ -91,6 +92,7 @@ namespace LA
 				if (FST::execute(fstbool))
 				{
 					LEX::Entry lEntry = { LEX_BOOL, line, col };
+					strcpy(lEntry.buf, buffer);
 					LEX::Add(*ltable, lEntry);
 					dataType = ID::BOOL;
 					idType = ID::V;
