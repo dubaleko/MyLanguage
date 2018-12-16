@@ -1,2 +1,29 @@
-﻿  Generation.cpp
+﻿  DVV-2018.cpp
+  Error.cpp
+  FST.cpp
+  GRB.cpp
+  Generation.cpp
+  ID.cpp
+  In.cpp
+  LEX.cpp
+  LexicalAnalizator.cpp
+d:\labs\yap\кп\dvv-2018\dvv-2018\lexicalanalizator.cpp(25): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labs\yap\кп\dvv-2018\dvv-2018\lexicalanalizator.cpp(245): warning C4244: =: преобразование "long double" в "int", возможна потеря данных
+  Log.cpp
+  MFST.cpp
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(103): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(121): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(128): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(142): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE6"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(157): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE5"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(187): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(194): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(197): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(200): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(206): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "MFST_TRACE4"
+d:\labs\yap\кп\dvv-2018\dvv-2018\mfst.cpp(259): warning C4267: =: преобразование из "size_t" в "short"; возможна потеря данных
+  Parameter.cpp
+  Semantic.cpp
+d:\labs\yap\кп\dvv-2018\dvv-2018\semantic.cpp(145): warning C4101: buf: неиспользованная локальная переменная
+  Создание кода...
   DVV-2018.vcxproj -> D:\Labs\YAP\КП\DVV-2018\Debug\DVV-2018.exe

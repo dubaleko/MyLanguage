@@ -34,9 +34,24 @@ namespace Gen
 					*cs.stream << "bool ";
 				}
 			}
+			if (ltable.table[i].lexema == LEX_LITERAL)
+			{
+				*cs.stream << ltable.table[i].buf;
+			}
+			if (ltable.table[i].lexema == LEX_LIBFUNC)
+			{
+				if (ltable.table[i].parm == 1)
+				{
+					*cs.stream << "strlen";
+				}
+				if (ltable.table[i].parm == 2)
+				{
+					*cs.stream << "substr";
+				}
+			}
 			if (ltable.table[i].lexema == LEX_ID)
 			{
-				if (ltable.table[i + 1].lexema == LEX_LEFTHESIS || ltable.table[i + 1].lexema == LEX_RIGHTHESIS)
+				if (ltable.table[i + 1].lexema == LEX_LEFTHESIS || ltable.table[i + 1].lexema == LEX_RIGHTHESIS || ltable.table[i+1].lexema == LEX_COMMA)
 				{
 					*cs.stream << ltable.table[i].buf;
 			    }
@@ -51,22 +66,15 @@ namespace Gen
 			}
 			if (ltable.table[i].lexema == LEX_RIGHTHESIS)
 			{
-				if (ltable.table[i + 1].lexema == LEX_LEFTBRACE)
-				{
-					*cs.stream << ")" << endl;
-				}
-				else
-				{
 				  *cs.stream << ")";
-				}
 			}
 			if (ltable.table[i].lexema == LEX_LEFTBRACE)
 			{
-				*cs.stream << "{" << endl;
+				*cs.stream << "{";
 			}
 			if (ltable.table[i].lexema == LEX_RIGHTBRACE)
 			{
-				*cs.stream << endl << "}" << endl;
+				*cs.stream  << "}";
 			}
 			if (ltable.table[i].lexema == LEX_RETURN)
 			{
@@ -78,7 +86,7 @@ namespace Gen
 			}
 			if (ltable.table[i].lexema == LEX_DVV)
 			{
-				*cs.stream << "void Main(string[] args)" << endl;
+				*cs.stream << "void Main(string[] args)";
 			}
 			if (ltable.table[i].lexema == LEX_IF)
 			{
@@ -86,22 +94,15 @@ namespace Gen
 			}
 			if (ltable.table[i].lexema == LEX_ELSE)
 			{
-				*cs.stream << "else" << endl;
+				*cs.stream << "else";
 			}
 			if (ltable.table[i].lexema == LEX_POINT)
 			{
-				if (ltable.table[i + 1].lexema == LEX_RIGHTBRACE)
-				{
 					*cs.stream << ";";
-				}
-				else
-				{
-					*cs.stream << ";" << endl;
-				}
 			}
 			if (ltable.table[i].lexema == LEX_COMMA)
 			{
-				*cs.stream << "," << endl;
+				*cs.stream << ",";
 			}
 			if (ltable.table[i].lexema == LEX_PLUS)
 			{
@@ -134,6 +135,10 @@ namespace Gen
 			if (ltable.table[i].lexema == LEX_LESS)
 			{
 				*cs.stream << " < ";
+			}
+			if (ltable.table[i].sn != ltable.table[i + 1].sn)
+			{
+				*cs.stream << endl;
 			}
 		}
 		END;

@@ -111,7 +111,7 @@
 	FST::NODE()
 
 #define FST_STRLIT 4, \
-	FST::NODE(2, FST::RELATION('\'', 1), FST::RELATION('\'', 2)),\
+	FST::NODE(1, FST::RELATION('"', 1)),\
 	FST::NODE(156, \
 	FST::RELATION('a', 1), FST::RELATION('b', 1), FST::RELATION('c', 1), FST::RELATION('d', 1), FST::RELATION('e', 1), FST::RELATION('f', 1),\
 	FST::RELATION('g', 1), FST::RELATION('h', 1), FST::RELATION('i', 1), FST::RELATION('j', 1), FST::RELATION('k', 1), FST::RELATION('l', 1),\
@@ -143,16 +143,24 @@
 	FST::RELATION('ý', 2), FST::RELATION('þ', 2), FST::RELATION('ÿ', 2), FST::RELATION(' ', 2), FST::RELATION('.', 2), FST::RELATION(',', 2),\
 	FST::RELATION('?', 2), FST::RELATION('!', 2), FST::RELATION(';', 2), FST::RELATION(':', 2), FST::RELATION('-', 2), FST::RELATION(' ', 2)),\
     \
-	FST::NODE(1, FST::RELATION('\'', 3)),\
+	FST::NODE(1, FST::RELATION('"', 3)),\
 	FST::NODE()
 
-#define FST_BOOLLIT 6,\
-    FST::NODE(2, FST::RELATION('t',1), FST::RELATION('f',1)),\
-    FST::NODE(2, FST::RELATION('r',2), FST::RELATION('a',2)),\
-    FST::NODE(2, FST::RELATION('u',3), FST::RELATION('l',3)),\
-    FST::NODE(2, FST::RELATION('t',4), FST::RELATION('s',4)),\
-    FST::NODE(2, FST::RELATION('h',5), FST::RELATION('e',5)),\
+#define FST_TRUE 5,\
+    FST::NODE(1, FST::RELATION('t',1)),\
+    FST::NODE(1, FST::RELATION('r',2)),\
+    FST::NODE(1, FST::RELATION('u',3)),\
+    FST::NODE(1, FST::RELATION('e',4)),\
     FST::NODE()
+
+#define FST_FALSE 6,\
+    FST::NODE(1, FST::RELATION('f',1)),\
+    FST::NODE(1, FST::RELATION('a',2)),\
+    FST::NODE(1, FST::RELATION('l',3)),\
+    FST::NODE(1, FST::RELATION('s',4)),\
+    FST::NODE(1, FST::RELATION('e',5)),\
+    FST::NODE()
+
 
 #define FST_POINT 2,\
     FST::NODE(1, FST::RELATION('.',1)),\

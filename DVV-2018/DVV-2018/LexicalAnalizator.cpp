@@ -160,8 +160,9 @@ namespace LA
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
-				FST::FST  fstlitbool(buffer, FST_BOOLLIT);
-				if (FST::execute(fstlitbool))
+				FST::FST fstlitbool(buffer, FST_FALSE);
+				FST::FST fstltbool(buffer, FST_TRUE);
+				if (FST::execute(fstlitbool) ||  FST::execute(fstltbool))
 				{
 					LEX::Entry lEntry = { LEX_LITERAL, line, col };
 					lEntry.znak = -1;

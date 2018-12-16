@@ -7,10 +7,10 @@ dvv
 [
 integer x : 10. 
 integer y : 10.
-string  str : 'str'. 
-string  mystr : 'mynewstring'.
+string  str : "str". 
+string  mystr : "mynewstring".
 bool mb : false.
-if ( 10 > 15)
+if ( true)
 [
 integer m : xz(str).
 print (m).

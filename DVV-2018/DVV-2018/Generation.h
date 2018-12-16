@@ -2,7 +2,7 @@
 
 namespace Gen
 {
- #define START  *cs.stream << "using System;" << endl << "namespace CourseProject" << endl << "{" << endl  << "class DVV2018" << endl  << "{" << endl; 
+ #define START  *cs.stream << "using System;" << endl << endl << "namespace CourseProject" << endl << "{" << endl  << "class DVV2018" << endl  << "{" << endl; 
  #define END    *cs.stream  << "}" << endl  << "}";
 	struct Cs
 	{
