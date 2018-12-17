@@ -206,8 +206,8 @@ namespace LA
 					}
 					strcpy(iEntry.postfix, postfix);
 					bool isExecute = false;
-					SA::Pereobyavl(*ltable, *itable, buffer, postfix, line, col);
 					SA::Proverka(*ltable, *itable);
+					SA::Pereobyavl(*ltable, *itable, buffer, postfix, line, col);
 					for (int i = 0; i <= (*itable).size; i++)
 					{
 						if (strcmp((*itable).table[i].id, buffer) == 0)
@@ -315,6 +315,7 @@ namespace LA
 				if (FST::execute(fstcomma))
 				{
 					LEX::Entry lEntry = { LEX_COMMA, line, col };
+					lEntry.priority = 1;
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
@@ -336,6 +337,7 @@ namespace LA
 				if (FST::execute(fstlthesis))
 				{
 					LEX::Entry lEntry = { LEX_LEFTHESIS, line, col };
+					lEntry.priority = 0;
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
@@ -343,6 +345,7 @@ namespace LA
 				if (FST::execute(fstrthesis))
 				{
 					LEX::Entry lEntry = { LEX_RIGHTHESIS, line, col };
+					lEntry.priority = 0;
 					LEX::Add(*ltable, lEntry);
 					continue;
 				}
@@ -382,6 +385,7 @@ namespace LA
 				{
 				   LEX::Entry lEntry = { LEX_PLUS, line, col };
 				   lEntry.znak = 1;
+				   lEntry.priority = 2;
 				   LEX::Add(*ltable, lEntry);
 				   goto link;
 				}
@@ -390,6 +394,7 @@ namespace LA
 				{
 					LEX::Entry lEntry = { LEX_MINUS, line, col };
 					lEntry.znak = 1;
+					lEntry.priority = 2;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -398,6 +403,7 @@ namespace LA
 				{
 					LEX::Entry lEntry = { LEX_STAR, line, col };
 					lEntry.znak = 1;
+					lEntry.priority = 3;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}
@@ -406,6 +412,7 @@ namespace LA
 				{
 					LEX::Entry lEntry = { LEX_DIRSLASH, line, col };
 					lEntry.znak = 1;
+					lEntry.priority = 3;
 					LEX::Add(*ltable, lEntry);
 					goto link;
 				}

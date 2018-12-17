@@ -2,8 +2,8 @@
 
 namespace Gen
 {
- #define START  *cs.stream << "using System;" << endl << endl << "namespace CourseProject" << endl << "{" << endl  << "class DVV2018" << endl  << "{" << endl; 
- #define END    *cs.stream  << "}" << endl  << "}";
+ #define START  *cs.stream << "using System;" << endl << endl << "namespace CourseProject" << endl << "{" << endl <<"\t" << "class DVV2018" << endl << "\t" << "{" << endl << endl << "\t" << "\t"; 
+ #define END    *cs.stream  << endl << "\t" << "}" << endl  << "}";
 	struct Cs
 	{
 		wchar_t csfile[PARAMETER_MAX_SIZE];

@@ -44,6 +44,7 @@ namespace LEX
 		int parm; // количество параметров в функции
 		char buf[LT_MAXSIZE * 2]; // буффер дл€ св€зи с таблицей лексем
 		int znak; 
+		int priority;
 	};
 
 	struct LexTable//экземп€р таблицы лексем

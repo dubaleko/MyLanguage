@@ -16,11 +16,16 @@ namespace Gen
 	}
 	void StartGeneration(LEX::LexTable& ltable, ID::IdTable& itable, Gen::Cs& cs)
 	{
+		bool flag = false;
 		START;
 		for (unsigned int i = 0; i < (unsigned int)ltable.size; i++)
 		{
 			if (ltable.table[i].lexema == LEX_INTEGER)
 			{
+				if (ltable.table[i + 1].lexema == LEX_FUNCTION)
+				{
+					*cs.stream << "static ";
+				}
 				if (strcmp(ltable.table[i].buf, "integer") == 0)
 				{
 					*cs.stream << "int ";
@@ -40,6 +45,7 @@ namespace Gen
 			}
 			if (ltable.table[i].lexema == LEX_LIBFUNC)
 			{
+				*cs.stream << "ClassLibrary.MyClass.";
 				if (ltable.table[i].parm == 1)
 				{
 					*cs.stream << "strlen";
@@ -70,11 +76,18 @@ namespace Gen
 			}
 			if (ltable.table[i].lexema == LEX_LEFTBRACE)
 			{
-				*cs.stream << "{";
+				*cs.stream << "{";				
 			}
 			if (ltable.table[i].lexema == LEX_RIGHTBRACE)
 			{
-				*cs.stream  << "}";
+				if (i + 2 > ltable.size)
+				{
+					*cs.stream << "while (Console.ReadKey().Key != ConsoleKey.Enter) {}" << endl << "\t" << "\t" << "}";
+				}
+				else
+				{
+					*cs.stream << "}";
+				}
 			}
 			if (ltable.table[i].lexema == LEX_RETURN)
 			{
@@ -86,7 +99,7 @@ namespace Gen
 			}
 			if (ltable.table[i].lexema == LEX_DVV)
 			{
-				*cs.stream << "void Main(string[] args)";
+				*cs.stream << "static void Main(string[] args)";
 			}
 			if (ltable.table[i].lexema == LEX_IF)
 			{
@@ -138,7 +151,7 @@ namespace Gen
 			}
 			if (ltable.table[i].sn != ltable.table[i + 1].sn)
 			{
-				*cs.stream << endl;
+				*cs.stream << endl << "\t" << "\t";
 			}
 		}
 		END;

@@ -18,6 +18,7 @@ using namespace std;
 #include "FST.h"
 #include "graf.h"
 #include "Log.h"
+#include"Polish.h"
 #include "LexicalAnalizator.h"
 #include "GRB.h"
 #include "MFST.h"

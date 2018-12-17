@@ -570,7 +570,7 @@ namespace SA
 				{
 					if (ltable.table[i].lexema == LEX_ID)
 					{
-						for (unsigned int j = 0; j < (unsigned int)ltable.size; j++)
+						for (unsigned int j = 0; j < (unsigned int)itable.size; j++)
 						{
 							if (strcmp(ltable.table[i].buf , itable.table[j].id) == 0)
 							{
