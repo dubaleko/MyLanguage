@@ -17,14 +17,15 @@ namespace CourseProject
 		string str  = "str";
 		string mystr  = "mynewstring";
 		bool mb  = false;
-		if (x  > y)
+		if (x  == y)
 		{
 		int m  = xz(str);
+		Console.WriteLine("string");
 		Console.WriteLine(m);
 		}
 		else
 		{
-		bool nb  = ClassLibrary.MyClass.substr(mystr,str);
+		string nb  = ClassLibrary.MyClass.substr(mystr,str);
 		Console.WriteLine(nb);
 		}
 		int z  = (x  + y) * (x  - y);

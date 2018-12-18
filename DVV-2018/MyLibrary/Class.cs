@@ -13,9 +13,9 @@ namespace ClassLibrary
             return str.Length;
         }
 
-        static public bool substr(string str, string newstring)
+        static public string substr(string str, string newstring)
         {
-            return str.Contains(newstring);
+            return String.Concat(str, newstring);
         }
 
     }

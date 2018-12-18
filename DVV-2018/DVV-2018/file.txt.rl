@@ -1,5 +1,5 @@
 ----Протокол rl----
-Время создания протокола: 17.12.2018 05:58:12, понедельник
+Время создания протокола: 17.12.2018 18:02:39, понедельник
 Шаг: Правило             Входная лента                 Стек               
 0   : S->tfi(Q)[Y]S       tfi(ti)[ti:s(i).ri.]d[ti:     S$                  
 0   : SAVESTATE:          1
@@ -50,380 +50,404 @@
 32  : E->l                l.ti:l.ti:l.ti:l.ti:l.w(i     E.N]$               
 32  : SAVESTATE:          8
 32  :                     l.ti:l.ti:l.ti:l.ti:l.w(i     l.N]$               
-33  :                     .ti:l.ti:l.ti:l.ti:l.w(i>     .N]$                
-34  :                     ti:l.ti:l.ti:l.ti:l.w(i>i     N]$                 
-35  : N->ti:E.N           ti:l.ti:l.ti:l.ti:l.w(i>i     N]$                 
+33  :                     .ti:l.ti:l.ti:l.ti:l.w(i=     .N]$                
+34  :                     ti:l.ti:l.ti:l.ti:l.w(i=i     N]$                 
+35  : N->ti:E.N           ti:l.ti:l.ti:l.ti:l.w(i=i     N]$                 
 35  : SAVESTATE:          9
-35  :                     ti:l.ti:l.ti:l.ti:l.w(i>i     ti:E.N]$            
-36  :                     i:l.ti:l.ti:l.ti:l.w(i>i)     i:E.N]$             
-37  :                     :l.ti:l.ti:l.ti:l.w(i>i)[     :E.N]$              
-38  :                     l.ti:l.ti:l.ti:l.w(i>i)[t     E.N]$               
-39  : E->l                l.ti:l.ti:l.ti:l.w(i>i)[t     E.N]$               
+35  :                     ti:l.ti:l.ti:l.ti:l.w(i=i     ti:E.N]$            
+36  :                     i:l.ti:l.ti:l.ti:l.w(i=i)     i:E.N]$             
+37  :                     :l.ti:l.ti:l.ti:l.w(i=i)[     :E.N]$              
+38  :                     l.ti:l.ti:l.ti:l.w(i=i)[t     E.N]$               
+39  : E->l                l.ti:l.ti:l.ti:l.w(i=i)[t     E.N]$               
 39  : SAVESTATE:          10
-39  :                     l.ti:l.ti:l.ti:l.w(i>i)[t     l.N]$               
-40  :                     .ti:l.ti:l.ti:l.w(i>i)[ti     .N]$                
-41  :                     ti:l.ti:l.ti:l.w(i>i)[ti:     N]$                 
-42  : N->ti:E.N           ti:l.ti:l.ti:l.w(i>i)[ti:     N]$                 
+39  :                     l.ti:l.ti:l.ti:l.w(i=i)[t     l.N]$               
+40  :                     .ti:l.ti:l.ti:l.w(i=i)[ti     .N]$                
+41  :                     ti:l.ti:l.ti:l.w(i=i)[ti:     N]$                 
+42  : N->ti:E.N           ti:l.ti:l.ti:l.w(i=i)[ti:     N]$                 
 42  : SAVESTATE:          11
-42  :                     ti:l.ti:l.ti:l.w(i>i)[ti:     ti:E.N]$            
-43  :                     i:l.ti:l.ti:l.w(i>i)[ti:i     i:E.N]$             
-44  :                     :l.ti:l.ti:l.w(i>i)[ti:i(     :E.N]$              
-45  :                     l.ti:l.ti:l.w(i>i)[ti:i(i     E.N]$               
-46  : E->l                l.ti:l.ti:l.w(i>i)[ti:i(i     E.N]$               
+42  :                     ti:l.ti:l.ti:l.w(i=i)[ti:     ti:E.N]$            
+43  :                     i:l.ti:l.ti:l.w(i=i)[ti:i     i:E.N]$             
+44  :                     :l.ti:l.ti:l.w(i=i)[ti:i(     :E.N]$              
+45  :                     l.ti:l.ti:l.w(i=i)[ti:i(i     E.N]$               
+46  : E->l                l.ti:l.ti:l.w(i=i)[ti:i(i     E.N]$               
 46  : SAVESTATE:          12
-46  :                     l.ti:l.ti:l.w(i>i)[ti:i(i     l.N]$               
-47  :                     .ti:l.ti:l.w(i>i)[ti:i(i)     .N]$                
-48  :                     ti:l.ti:l.w(i>i)[ti:i(i).     N]$                 
-49  : N->ti:E.N           ti:l.ti:l.w(i>i)[ti:i(i).     N]$                 
+46  :                     l.ti:l.ti:l.w(i=i)[ti:i(i     l.N]$               
+47  :                     .ti:l.ti:l.w(i=i)[ti:i(i)     .N]$                
+48  :                     ti:l.ti:l.w(i=i)[ti:i(i).     N]$                 
+49  : N->ti:E.N           ti:l.ti:l.w(i=i)[ti:i(i).     N]$                 
 49  : SAVESTATE:          13
-49  :                     ti:l.ti:l.w(i>i)[ti:i(i).     ti:E.N]$            
-50  :                     i:l.ti:l.w(i>i)[ti:i(i).p     i:E.N]$             
-51  :                     :l.ti:l.w(i>i)[ti:i(i).p(     :E.N]$              
-52  :                     l.ti:l.w(i>i)[ti:i(i).p(i     E.N]$               
-53  : E->l                l.ti:l.w(i>i)[ti:i(i).p(i     E.N]$               
+49  :                     ti:l.ti:l.w(i=i)[ti:i(i).     ti:E.N]$            
+50  :                     i:l.ti:l.w(i=i)[ti:i(i).p     i:E.N]$             
+51  :                     :l.ti:l.w(i=i)[ti:i(i).p(     :E.N]$              
+52  :                     l.ti:l.w(i=i)[ti:i(i).p(l     E.N]$               
+53  : E->l                l.ti:l.w(i=i)[ti:i(i).p(l     E.N]$               
 53  : SAVESTATE:          14
-53  :                     l.ti:l.w(i>i)[ti:i(i).p(i     l.N]$               
-54  :                     .ti:l.w(i>i)[ti:i(i).p(i)     .N]$                
-55  :                     ti:l.w(i>i)[ti:i(i).p(i).     N]$                 
-56  : N->ti:E.N           ti:l.w(i>i)[ti:i(i).p(i).     N]$                 
+53  :                     l.ti:l.w(i=i)[ti:i(i).p(l     l.N]$               
+54  :                     .ti:l.w(i=i)[ti:i(i).p(l)     .N]$                
+55  :                     ti:l.w(i=i)[ti:i(i).p(l).     N]$                 
+56  : N->ti:E.N           ti:l.w(i=i)[ti:i(i).p(l).     N]$                 
 56  : SAVESTATE:          15
-56  :                     ti:l.w(i>i)[ti:i(i).p(i).     ti:E.N]$            
-57  :                     i:l.w(i>i)[ti:i(i).p(i).]     i:E.N]$             
-58  :                     :l.w(i>i)[ti:i(i).p(i).]e     :E.N]$              
-59  :                     l.w(i>i)[ti:i(i).p(i).]e[     E.N]$               
-60  : E->l                l.w(i>i)[ti:i(i).p(i).]e[     E.N]$               
+56  :                     ti:l.w(i=i)[ti:i(i).p(l).     ti:E.N]$            
+57  :                     i:l.w(i=i)[ti:i(i).p(l).p     i:E.N]$             
+58  :                     :l.w(i=i)[ti:i(i).p(l).p(     :E.N]$              
+59  :                     l.w(i=i)[ti:i(i).p(l).p(i     E.N]$               
+60  : E->l                l.w(i=i)[ti:i(i).p(l).p(i     E.N]$               
 60  : SAVESTATE:          16
-60  :                     l.w(i>i)[ti:i(i).p(i).]e[     l.N]$               
-61  :                     .w(i>i)[ti:i(i).p(i).]e[t     .N]$                
-62  :                     w(i>i)[ti:i(i).p(i).]e[ti     N]$                 
-63  : N->w(K)[N]e[N]N     w(i>i)[ti:i(i).p(i).]e[ti     N]$                 
+60  :                     l.w(i=i)[ti:i(i).p(l).p(i     l.N]$               
+61  :                     .w(i=i)[ti:i(i).p(l).p(i)     .N]$                
+62  :                     w(i=i)[ti:i(i).p(l).p(i).     N]$                 
+63  : N->w(K)[N]e[N]N     w(i=i)[ti:i(i).p(l).p(i).     N]$                 
 63  : SAVESTATE:          17
-63  :                     w(i>i)[ti:i(i).p(i).]e[ti     w(K)[N]e[N]N]$      
-64  :                     (i>i)[ti:i(i).p(i).]e[ti:     (K)[N]e[N]N]$       
-65  :                     i>i)[ti:i(i).p(i).]e[ti:s     K)[N]e[N]N]$        
-66  : K->i                i>i)[ti:i(i).p(i).]e[ti:s     K)[N]e[N]N]$        
+63  :                     w(i=i)[ti:i(i).p(l).p(i).     w(K)[N]e[N]N]$      
+64  :                     (i=i)[ti:i(i).p(l).p(i).]     (K)[N]e[N]N]$       
+65  :                     i=i)[ti:i(i).p(l).p(i).]e     K)[N]e[N]N]$        
+66  : K->i                i=i)[ti:i(i).p(l).p(i).]e     K)[N]e[N]N]$        
 66  : SAVESTATE:          18
-66  :                     i>i)[ti:i(i).p(i).]e[ti:s     i)[N]e[N]N]$        
-67  :                     >i)[ti:i(i).p(i).]e[ti:s(     )[N]e[N]N]$         
+66  :                     i=i)[ti:i(i).p(l).p(i).]e     i)[N]e[N]N]$        
+67  :                     =i)[ti:i(i).p(l).p(i).]e[     )[N]e[N]N]$         
 68  : TS_NOK/NS_NORULECHAIN
 68  : RESSTATE            
-68  :                     i>i)[ti:i(i).p(i).]e[ti:s     K)[N]e[N]N]$        
-69  : K->iBi              i>i)[ti:i(i).p(i).]e[ti:s     K)[N]e[N]N]$        
+68  :                     i=i)[ti:i(i).p(l).p(i).]e     K)[N]e[N]N]$        
+69  : K->iBi              i=i)[ti:i(i).p(l).p(i).]e     K)[N]e[N]N]$        
 69  : SAVESTATE:          18
-69  :                     i>i)[ti:i(i).p(i).]e[ti:s     iBi)[N]e[N]N]$      
-70  :                     >i)[ti:i(i).p(i).]e[ti:s(     Bi)[N]e[N]N]$       
-71  : B->>                >i)[ti:i(i).p(i).]e[ti:s(     Bi)[N]e[N]N]$       
+69  :                     i=i)[ti:i(i).p(l).p(i).]e     iBi)[N]e[N]N]$      
+70  :                     =i)[ti:i(i).p(l).p(i).]e[     Bi)[N]e[N]N]$       
+71  : B->=                =i)[ti:i(i).p(l).p(i).]e[     Bi)[N]e[N]N]$       
 71  : SAVESTATE:          19
-71  :                     >i)[ti:i(i).p(i).]e[ti:s(     >i)[N]e[N]N]$       
-72  :                     i)[ti:i(i).p(i).]e[ti:s(i     i)[N]e[N]N]$        
-73  :                     )[ti:i(i).p(i).]e[ti:s(i,     )[N]e[N]N]$         
-74  :                     [ti:i(i).p(i).]e[ti:s(i,i     [N]e[N]N]$          
-75  :                     ti:i(i).p(i).]e[ti:s(i,i)     N]e[N]N]$           
-76  : N->ti:E.N           ti:i(i).p(i).]e[ti:s(i,i)     N]e[N]N]$           
+71  :                     =i)[ti:i(i).p(l).p(i).]e[     =i)[N]e[N]N]$       
+72  :                     i)[ti:i(i).p(l).p(i).]e[t     i)[N]e[N]N]$        
+73  :                     )[ti:i(i).p(l).p(i).]e[ti     )[N]e[N]N]$         
+74  :                     [ti:i(i).p(l).p(i).]e[ti:     [N]e[N]N]$          
+75  :                     ti:i(i).p(l).p(i).]e[ti:s     N]e[N]N]$           
+76  : N->ti:E.N           ti:i(i).p(l).p(i).]e[ti:s     N]e[N]N]$           
 76  : SAVESTATE:          20
-76  :                     ti:i(i).p(i).]e[ti:s(i,i)     ti:E.N]e[N]N]$      
-77  :                     i:i(i).p(i).]e[ti:s(i,i).     i:E.N]e[N]N]$       
-78  :                     :i(i).p(i).]e[ti:s(i,i).p     :E.N]e[N]N]$        
-79  :                     i(i).p(i).]e[ti:s(i,i).p(     E.N]e[N]N]$         
-80  : E->i                i(i).p(i).]e[ti:s(i,i).p(     E.N]e[N]N]$         
+76  :                     ti:i(i).p(l).p(i).]e[ti:s     ti:E.N]e[N]N]$      
+77  :                     i:i(i).p(l).p(i).]e[ti:s(     i:E.N]e[N]N]$       
+78  :                     :i(i).p(l).p(i).]e[ti:s(i     :E.N]e[N]N]$        
+79  :                     i(i).p(l).p(i).]e[ti:s(i,     E.N]e[N]N]$         
+80  : E->i                i(i).p(l).p(i).]e[ti:s(i,     E.N]e[N]N]$         
 80  : SAVESTATE:          21
-80  :                     i(i).p(i).]e[ti:s(i,i).p(     i.N]e[N]N]$         
-81  :                     (i).p(i).]e[ti:s(i,i).p(i     .N]e[N]N]$          
+80  :                     i(i).p(l).p(i).]e[ti:s(i,     i.N]e[N]N]$         
+81  :                     (i).p(l).p(i).]e[ti:s(i,i     .N]e[N]N]$          
 82  : TS_NOK/NS_NORULECHAIN
 82  : RESSTATE            
-82  :                     i(i).p(i).]e[ti:s(i,i).p(     E.N]e[N]N]$         
-83  : E->i(O)             i(i).p(i).]e[ti:s(i,i).p(     E.N]e[N]N]$         
+82  :                     i(i).p(l).p(i).]e[ti:s(i,     E.N]e[N]N]$         
+83  : E->i(O)             i(i).p(l).p(i).]e[ti:s(i,     E.N]e[N]N]$         
 83  : SAVESTATE:          21
-83  :                     i(i).p(i).]e[ti:s(i,i).p(     i(O).N]e[N]N]$      
-84  :                     (i).p(i).]e[ti:s(i,i).p(i     (O).N]e[N]N]$       
-85  :                     i).p(i).]e[ti:s(i,i).p(i)     O).N]e[N]N]$        
-86  : O->i                i).p(i).]e[ti:s(i,i).p(i)     O).N]e[N]N]$        
+83  :                     i(i).p(l).p(i).]e[ti:s(i,     i(O).N]e[N]N]$      
+84  :                     (i).p(l).p(i).]e[ti:s(i,i     (O).N]e[N]N]$       
+85  :                     i).p(l).p(i).]e[ti:s(i,i)     O).N]e[N]N]$        
+86  : O->i                i).p(l).p(i).]e[ti:s(i,i)     O).N]e[N]N]$        
 86  : SAVESTATE:          22
-86  :                     i).p(i).]e[ti:s(i,i).p(i)     i).N]e[N]N]$        
-87  :                     ).p(i).]e[ti:s(i,i).p(i).     ).N]e[N]N]$         
-88  :                     .p(i).]e[ti:s(i,i).p(i).]     .N]e[N]N]$          
-89  :                     p(i).]e[ti:s(i,i).p(i).]t     N]e[N]N]$           
-90  : N->p(i).N           p(i).]e[ti:s(i,i).p(i).]t     N]e[N]N]$           
+86  :                     i).p(l).p(i).]e[ti:s(i,i)     i).N]e[N]N]$        
+87  :                     ).p(l).p(i).]e[ti:s(i,i).     ).N]e[N]N]$         
+88  :                     .p(l).p(i).]e[ti:s(i,i).p     .N]e[N]N]$          
+89  :                     p(l).p(i).]e[ti:s(i,i).p(     N]e[N]N]$           
+90  : N->p(i).N           p(l).p(i).]e[ti:s(i,i).p(     N]e[N]N]$           
 90  : SAVESTATE:          23
-90  :                     p(i).]e[ti:s(i,i).p(i).]t     p(i).N]e[N]N]$      
-91  :                     (i).]e[ti:s(i,i).p(i).]ti     (i).N]e[N]N]$       
-92  :                     i).]e[ti:s(i,i).p(i).]ti:     i).N]e[N]N]$        
-93  :                     ).]e[ti:s(i,i).p(i).]ti:(     ).N]e[N]N]$         
-94  :                     .]e[ti:s(i,i).p(i).]ti:(i     .N]e[N]N]$          
-95  :                     ]e[ti:s(i,i).p(i).]ti:(i+     N]e[N]N]$           
-96  : TNS_NORULECHAIN/NS_NORULE
-96  : RESSTATE            
-96  :                     p(i).]e[ti:s(i,i).p(i).]t     N]e[N]N]$           
-97  : N->p(i).            p(i).]e[ti:s(i,i).p(i).]t     N]e[N]N]$           
-97  : SAVESTATE:          23
-97  :                     p(i).]e[ti:s(i,i).p(i).]t     p(i).]e[N]N]$       
-98  :                     (i).]e[ti:s(i,i).p(i).]ti     (i).]e[N]N]$        
-99  :                     i).]e[ti:s(i,i).p(i).]ti:     i).]e[N]N]$         
-100 :                     ).]e[ti:s(i,i).p(i).]ti:(     ).]e[N]N]$          
-101 :                     .]e[ti:s(i,i).p(i).]ti:(i     .]e[N]N]$           
-102 :                     ]e[ti:s(i,i).p(i).]ti:(i+     ]e[N]N]$            
-103 :                     e[ti:s(i,i).p(i).]ti:(i+i     e[N]N]$             
-104 :                     [ti:s(i,i).p(i).]ti:(i+i)     [N]N]$              
-105 :                     ti:s(i,i).p(i).]ti:(i+i)*     N]N]$               
-106 : N->ti:E.N           ti:s(i,i).p(i).]ti:(i+i)*     N]N]$               
-106 : SAVESTATE:          24
-106 :                     ti:s(i,i).p(i).]ti:(i+i)*     ti:E.N]N]$          
-107 :                     i:s(i,i).p(i).]ti:(i+i)*(     i:E.N]N]$           
-108 :                     :s(i,i).p(i).]ti:(i+i)*(i     :E.N]N]$            
-109 :                     s(i,i).p(i).]ti:(i+i)*(i-     E.N]N]$             
-110 : E->s(i)             s(i,i).p(i).]ti:(i+i)*(i-     E.N]N]$             
-110 : SAVESTATE:          25
-110 :                     s(i,i).p(i).]ti:(i+i)*(i-     s(i).N]N]$          
-111 :                     (i,i).p(i).]ti:(i+i)*(i-i     (i).N]N]$           
-112 :                     i,i).p(i).]ti:(i+i)*(i-i)     i).N]N]$            
-113 :                     ,i).p(i).]ti:(i+i)*(i-i).     ).N]N]$             
-114 : TS_NOK/NS_NORULECHAIN
-114 : RESSTATE            
-114 :                     s(i,i).p(i).]ti:(i+i)*(i-     E.N]N]$             
-115 : E->s(i,i)           s(i,i).p(i).]ti:(i+i)*(i-     E.N]N]$             
-115 : SAVESTATE:          25
-115 :                     s(i,i).p(i).]ti:(i+i)*(i-     s(i,i).N]N]$        
-116 :                     (i,i).p(i).]ti:(i+i)*(i-i     (i,i).N]N]$         
-117 :                     i,i).p(i).]ti:(i+i)*(i-i)     i,i).N]N]$          
-118 :                     ,i).p(i).]ti:(i+i)*(i-i).     ,i).N]N]$           
-119 :                     i).p(i).]ti:(i+i)*(i-i).p     i).N]N]$            
-120 :                     ).p(i).]ti:(i+i)*(i-i).p(     ).N]N]$             
-121 :                     .p(i).]ti:(i+i)*(i-i).p(i     .N]N]$              
-122 :                     p(i).]ti:(i+i)*(i-i).p(i)     N]N]$               
-123 : N->p(i).N           p(i).]ti:(i+i)*(i-i).p(i)     N]N]$               
-123 : SAVESTATE:          26
-123 :                     p(i).]ti:(i+i)*(i-i).p(i)     p(i).N]N]$          
-124 :                     (i).]ti:(i+i)*(i-i).p(i).     (i).N]N]$           
-125 :                     i).]ti:(i+i)*(i-i).p(i).]     i).N]N]$            
-126 :                     ).]ti:(i+i)*(i-i).p(i).]      ).N]N]$             
-127 :                     .]ti:(i+i)*(i-i).p(i).]       .N]N]$              
-128 :                     ]ti:(i+i)*(i-i).p(i).]        N]N]$               
-129 : TNS_NORULECHAIN/NS_NORULE
-129 : RESSTATE            
-129 :                     p(i).]ti:(i+i)*(i-i).p(i)     N]N]$               
-130 : N->p(i).            p(i).]ti:(i+i)*(i-i).p(i)     N]N]$               
-130 : SAVESTATE:          26
-130 :                     p(i).]ti:(i+i)*(i-i).p(i)     p(i).]N]$           
-131 :                     (i).]ti:(i+i)*(i-i).p(i).     (i).]N]$            
-132 :                     i).]ti:(i+i)*(i-i).p(i).]     i).]N]$             
-133 :                     ).]ti:(i+i)*(i-i).p(i).]      ).]N]$              
-134 :                     .]ti:(i+i)*(i-i).p(i).]       .]N]$               
-135 :                     ]ti:(i+i)*(i-i).p(i).]        ]N]$                
-136 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
-137 : N->ti:E.N           ti:(i+i)*(i-i).p(i).]         N]$                 
+90  :                     p(l).p(i).]e[ti:s(i,i).p(     p(i).N]e[N]N]$      
+91  :                     (l).p(i).]e[ti:s(i,i).p(i     (i).N]e[N]N]$       
+92  :                     l).p(i).]e[ti:s(i,i).p(i)     i).N]e[N]N]$        
+93  : TS_NOK/NS_NORULECHAIN
+93  : RESSTATE            
+93  :                     p(l).p(i).]e[ti:s(i,i).p(     N]e[N]N]$           
+94  : N->p(i).            p(l).p(i).]e[ti:s(i,i).p(     N]e[N]N]$           
+94  : SAVESTATE:          23
+94  :                     p(l).p(i).]e[ti:s(i,i).p(     p(i).]e[N]N]$       
+95  :                     (l).p(i).]e[ti:s(i,i).p(i     (i).]e[N]N]$        
+96  :                     l).p(i).]e[ti:s(i,i).p(i)     i).]e[N]N]$         
+97  : TS_NOK/NS_NORULECHAIN
+97  : RESSTATE            
+97  :                     p(l).p(i).]e[ti:s(i,i).p(     N]e[N]N]$           
+98  : N->p(l).N           p(l).p(i).]e[ti:s(i,i).p(     N]e[N]N]$           
+98  : SAVESTATE:          23
+98  :                     p(l).p(i).]e[ti:s(i,i).p(     p(l).N]e[N]N]$      
+99  :                     (l).p(i).]e[ti:s(i,i).p(i     (l).N]e[N]N]$       
+100 :                     l).p(i).]e[ti:s(i,i).p(i)     l).N]e[N]N]$        
+101 :                     ).p(i).]e[ti:s(i,i).p(i).     ).N]e[N]N]$         
+102 :                     .p(i).]e[ti:s(i,i).p(i).]     .N]e[N]N]$          
+103 :                     p(i).]e[ti:s(i,i).p(i).]t     N]e[N]N]$           
+104 : N->p(i).N           p(i).]e[ti:s(i,i).p(i).]t     N]e[N]N]$           
+104 : SAVESTATE:          24
+104 :                     p(i).]e[ti:s(i,i).p(i).]t     p(i).N]e[N]N]$      
+105 :                     (i).]e[ti:s(i,i).p(i).]ti     (i).N]e[N]N]$       
+106 :                     i).]e[ti:s(i,i).p(i).]ti:     i).N]e[N]N]$        
+107 :                     ).]e[ti:s(i,i).p(i).]ti:(     ).N]e[N]N]$         
+108 :                     .]e[ti:s(i,i).p(i).]ti:(i     .N]e[N]N]$          
+109 :                     ]e[ti:s(i,i).p(i).]ti:(i+     N]e[N]N]$           
+110 : TNS_NORULECHAIN/NS_NORULE
+110 : RESSTATE            
+110 :                     p(i).]e[ti:s(i,i).p(i).]t     N]e[N]N]$           
+111 : N->p(i).            p(i).]e[ti:s(i,i).p(i).]t     N]e[N]N]$           
+111 : SAVESTATE:          24
+111 :                     p(i).]e[ti:s(i,i).p(i).]t     p(i).]e[N]N]$       
+112 :                     (i).]e[ti:s(i,i).p(i).]ti     (i).]e[N]N]$        
+113 :                     i).]e[ti:s(i,i).p(i).]ti:     i).]e[N]N]$         
+114 :                     ).]e[ti:s(i,i).p(i).]ti:(     ).]e[N]N]$          
+115 :                     .]e[ti:s(i,i).p(i).]ti:(i     .]e[N]N]$           
+116 :                     ]e[ti:s(i,i).p(i).]ti:(i+     ]e[N]N]$            
+117 :                     e[ti:s(i,i).p(i).]ti:(i+i     e[N]N]$             
+118 :                     [ti:s(i,i).p(i).]ti:(i+i)     [N]N]$              
+119 :                     ti:s(i,i).p(i).]ti:(i+i)*     N]N]$               
+120 : N->ti:E.N           ti:s(i,i).p(i).]ti:(i+i)*     N]N]$               
+120 : SAVESTATE:          25
+120 :                     ti:s(i,i).p(i).]ti:(i+i)*     ti:E.N]N]$          
+121 :                     i:s(i,i).p(i).]ti:(i+i)*(     i:E.N]N]$           
+122 :                     :s(i,i).p(i).]ti:(i+i)*(i     :E.N]N]$            
+123 :                     s(i,i).p(i).]ti:(i+i)*(i-     E.N]N]$             
+124 : E->s(i)             s(i,i).p(i).]ti:(i+i)*(i-     E.N]N]$             
+124 : SAVESTATE:          26
+124 :                     s(i,i).p(i).]ti:(i+i)*(i-     s(i).N]N]$          
+125 :                     (i,i).p(i).]ti:(i+i)*(i-i     (i).N]N]$           
+126 :                     i,i).p(i).]ti:(i+i)*(i-i)     i).N]N]$            
+127 :                     ,i).p(i).]ti:(i+i)*(i-i).     ).N]N]$             
+128 : TS_NOK/NS_NORULECHAIN
+128 : RESSTATE            
+128 :                     s(i,i).p(i).]ti:(i+i)*(i-     E.N]N]$             
+129 : E->s(i,i)           s(i,i).p(i).]ti:(i+i)*(i-     E.N]N]$             
+129 : SAVESTATE:          26
+129 :                     s(i,i).p(i).]ti:(i+i)*(i-     s(i,i).N]N]$        
+130 :                     (i,i).p(i).]ti:(i+i)*(i-i     (i,i).N]N]$         
+131 :                     i,i).p(i).]ti:(i+i)*(i-i)     i,i).N]N]$          
+132 :                     ,i).p(i).]ti:(i+i)*(i-i).     ,i).N]N]$           
+133 :                     i).p(i).]ti:(i+i)*(i-i).p     i).N]N]$            
+134 :                     ).p(i).]ti:(i+i)*(i-i).p(     ).N]N]$             
+135 :                     .p(i).]ti:(i+i)*(i-i).p(i     .N]N]$              
+136 :                     p(i).]ti:(i+i)*(i-i).p(i)     N]N]$               
+137 : N->p(i).N           p(i).]ti:(i+i)*(i-i).p(i)     N]N]$               
 137 : SAVESTATE:          27
-137 :                     ti:(i+i)*(i-i).p(i).]         ti:E.N]$            
-138 :                     i:(i+i)*(i-i).p(i).]          i:E.N]$             
-139 :                     :(i+i)*(i-i).p(i).]           :E.N]$              
-140 :                     (i+i)*(i-i).p(i).]            E.N]$               
-141 : TNS_NORULECHAIN/NS_NORULE
-141 : RESSTATE            
-141 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
-142 : N->ti:E.            ti:(i+i)*(i-i).p(i).]         N]$                 
-142 : SAVESTATE:          27
-142 :                     ti:(i+i)*(i-i).p(i).]         ti:E.]$             
-143 :                     i:(i+i)*(i-i).p(i).]          i:E.]$              
-144 :                     :(i+i)*(i-i).p(i).]           :E.]$               
-145 :                     (i+i)*(i-i).p(i).]            E.]$                
-146 : TNS_NORULECHAIN/NS_NORULE
-146 : RESSTATE            
-146 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
-147 : N->tO.N             ti:(i+i)*(i-i).p(i).]         N]$                 
-147 : SAVESTATE:          27
-147 :                     ti:(i+i)*(i-i).p(i).]         tO.N]$              
-148 :                     i:(i+i)*(i-i).p(i).]          O.N]$               
-149 : O->i                i:(i+i)*(i-i).p(i).]          O.N]$               
-149 : SAVESTATE:          28
-149 :                     i:(i+i)*(i-i).p(i).]          i.N]$               
-150 :                     :(i+i)*(i-i).p(i).]           .N]$                
-151 : TS_NOK/NS_NORULECHAIN
-151 : RESSTATE            
-151 :                     i:(i+i)*(i-i).p(i).]          O.N]$               
-152 : O->i,O              i:(i+i)*(i-i).p(i).]          O.N]$               
-152 : SAVESTATE:          28
-152 :                     i:(i+i)*(i-i).p(i).]          i,O.N]$             
-153 :                     :(i+i)*(i-i).p(i).]           ,O.N]$              
-154 : TS_NOK/NS_NORULECHAIN
-154 : RESSTATE            
-154 :                     i:(i+i)*(i-i).p(i).]          O.N]$               
+137 :                     p(i).]ti:(i+i)*(i-i).p(i)     p(i).N]N]$          
+138 :                     (i).]ti:(i+i)*(i-i).p(i).     (i).N]N]$           
+139 :                     i).]ti:(i+i)*(i-i).p(i).]     i).N]N]$            
+140 :                     ).]ti:(i+i)*(i-i).p(i).]      ).N]N]$             
+141 :                     .]ti:(i+i)*(i-i).p(i).]       .N]N]$              
+142 :                     ]ti:(i+i)*(i-i).p(i).]        N]N]$               
+143 : TNS_NORULECHAIN/NS_NORULE
+143 : RESSTATE            
+143 :                     p(i).]ti:(i+i)*(i-i).p(i)     N]N]$               
+144 : N->p(i).            p(i).]ti:(i+i)*(i-i).p(i)     N]N]$               
+144 : SAVESTATE:          27
+144 :                     p(i).]ti:(i+i)*(i-i).p(i)     p(i).]N]$           
+145 :                     (i).]ti:(i+i)*(i-i).p(i).     (i).]N]$            
+146 :                     i).]ti:(i+i)*(i-i).p(i).]     i).]N]$             
+147 :                     ).]ti:(i+i)*(i-i).p(i).]      ).]N]$              
+148 :                     .]ti:(i+i)*(i-i).p(i).]       .]N]$               
+149 :                     ]ti:(i+i)*(i-i).p(i).]        ]N]$                
+150 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
+151 : N->ti:E.N           ti:(i+i)*(i-i).p(i).]         N]$                 
+151 : SAVESTATE:          28
+151 :                     ti:(i+i)*(i-i).p(i).]         ti:E.N]$            
+152 :                     i:(i+i)*(i-i).p(i).]          i:E.N]$             
+153 :                     :(i+i)*(i-i).p(i).]           :E.N]$              
+154 :                     (i+i)*(i-i).p(i).]            E.N]$               
 155 : TNS_NORULECHAIN/NS_NORULE
 155 : RESSTATE            
 155 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
-156 : N->tO.              ti:(i+i)*(i-i).p(i).]         N]$                 
-156 : SAVESTATE:          27
-156 :                     ti:(i+i)*(i-i).p(i).]         tO.]$               
-157 :                     i:(i+i)*(i-i).p(i).]          O.]$                
-158 : O->i                i:(i+i)*(i-i).p(i).]          O.]$                
-158 : SAVESTATE:          28
-158 :                     i:(i+i)*(i-i).p(i).]          i.]$                
-159 :                     :(i+i)*(i-i).p(i).]           .]$                 
-160 : TS_NOK/NS_NORULECHAIN
+156 : N->ti:E.            ti:(i+i)*(i-i).p(i).]         N]$                 
+156 : SAVESTATE:          28
+156 :                     ti:(i+i)*(i-i).p(i).]         ti:E.]$             
+157 :                     i:(i+i)*(i-i).p(i).]          i:E.]$              
+158 :                     :(i+i)*(i-i).p(i).]           :E.]$               
+159 :                     (i+i)*(i-i).p(i).]            E.]$                
+160 : TNS_NORULECHAIN/NS_NORULE
 160 : RESSTATE            
-160 :                     i:(i+i)*(i-i).p(i).]          O.]$                
-161 : O->i,O              i:(i+i)*(i-i).p(i).]          O.]$                
+160 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
+161 : N->tO.N             ti:(i+i)*(i-i).p(i).]         N]$                 
 161 : SAVESTATE:          28
-161 :                     i:(i+i)*(i-i).p(i).]          i,O.]$              
-162 :                     :(i+i)*(i-i).p(i).]           ,O.]$               
-163 : TS_NOK/NS_NORULECHAIN
-163 : RESSTATE            
-163 :                     i:(i+i)*(i-i).p(i).]          O.]$                
-164 : TNS_NORULECHAIN/NS_NORULE
-164 : RESSTATE            
-164 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
-165 : N->ti:P.N           ti:(i+i)*(i-i).p(i).]         N]$                 
-165 : SAVESTATE:          27
-165 :                     ti:(i+i)*(i-i).p(i).]         ti:P.N]$            
-166 :                     i:(i+i)*(i-i).p(i).]          i:P.N]$             
-167 :                     :(i+i)*(i-i).p(i).]           :P.N]$              
-168 :                     (i+i)*(i-i).p(i).]            P.N]$               
-169 : P->(P)              (i+i)*(i-i).p(i).]            P.N]$               
-169 : SAVESTATE:          28
-169 :                     (i+i)*(i-i).p(i).]            (P).N]$             
-170 :                     i+i)*(i-i).p(i).]             P).N]$              
-171 : P->i                i+i)*(i-i).p(i).]             P).N]$              
-171 : SAVESTATE:          29
-171 :                     i+i)*(i-i).p(i).]             i).N]$              
-172 :                     +i)*(i-i).p(i).]              ).N]$               
-173 : TS_NOK/NS_NORULECHAIN
-173 : RESSTATE            
-173 :                     i+i)*(i-i).p(i).]             P).N]$              
-174 : P->iP               i+i)*(i-i).p(i).]             P).N]$              
-174 : SAVESTATE:          29
-174 :                     i+i)*(i-i).p(i).]             iP).N]$             
-175 :                     +i)*(i-i).p(i).]              P).N]$              
-176 : TNS_NORULECHAIN/NS_NORULE
-176 : RESSTATE            
-176 :                     i+i)*(i-i).p(i).]             P).N]$              
-177 : P->iMP              i+i)*(i-i).p(i).]             P).N]$              
-177 : SAVESTATE:          29
-177 :                     i+i)*(i-i).p(i).]             iMP).N]$            
-178 :                     +i)*(i-i).p(i).]              MP).N]$             
-179 : M->+                +i)*(i-i).p(i).]              MP).N]$             
-179 : SAVESTATE:          30
-179 :                     +i)*(i-i).p(i).]              +P).N]$             
-180 :                     i)*(i-i).p(i).]               P).N]$              
-181 : P->i                i)*(i-i).p(i).]               P).N]$              
-181 : SAVESTATE:          31
-181 :                     i)*(i-i).p(i).]               i).N]$              
-182 :                     )*(i-i).p(i).]                ).N]$               
-183 :                     *(i-i).p(i).]                 .N]$                
-184 : TS_NOK/NS_NORULECHAIN
-184 : RESSTATE            
-184 :                     i)*(i-i).p(i).]               P).N]$              
-185 : P->iP               i)*(i-i).p(i).]               P).N]$              
-185 : SAVESTATE:          31
-185 :                     i)*(i-i).p(i).]               iP).N]$             
-186 :                     )*(i-i).p(i).]                P).N]$              
-187 : TNS_NORULECHAIN/NS_NORULE
+161 :                     ti:(i+i)*(i-i).p(i).]         tO.N]$              
+162 :                     i:(i+i)*(i-i).p(i).]          O.N]$               
+163 : O->i                i:(i+i)*(i-i).p(i).]          O.N]$               
+163 : SAVESTATE:          29
+163 :                     i:(i+i)*(i-i).p(i).]          i.N]$               
+164 :                     :(i+i)*(i-i).p(i).]           .N]$                
+165 : TS_NOK/NS_NORULECHAIN
+165 : RESSTATE            
+165 :                     i:(i+i)*(i-i).p(i).]          O.N]$               
+166 : O->i,O              i:(i+i)*(i-i).p(i).]          O.N]$               
+166 : SAVESTATE:          29
+166 :                     i:(i+i)*(i-i).p(i).]          i,O.N]$             
+167 :                     :(i+i)*(i-i).p(i).]           ,O.N]$              
+168 : TS_NOK/NS_NORULECHAIN
+168 : RESSTATE            
+168 :                     i:(i+i)*(i-i).p(i).]          O.N]$               
+169 : TNS_NORULECHAIN/NS_NORULE
+169 : RESSTATE            
+169 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
+170 : N->tO.              ti:(i+i)*(i-i).p(i).]         N]$                 
+170 : SAVESTATE:          28
+170 :                     ti:(i+i)*(i-i).p(i).]         tO.]$               
+171 :                     i:(i+i)*(i-i).p(i).]          O.]$                
+172 : O->i                i:(i+i)*(i-i).p(i).]          O.]$                
+172 : SAVESTATE:          29
+172 :                     i:(i+i)*(i-i).p(i).]          i.]$                
+173 :                     :(i+i)*(i-i).p(i).]           .]$                 
+174 : TS_NOK/NS_NORULECHAIN
+174 : RESSTATE            
+174 :                     i:(i+i)*(i-i).p(i).]          O.]$                
+175 : O->i,O              i:(i+i)*(i-i).p(i).]          O.]$                
+175 : SAVESTATE:          29
+175 :                     i:(i+i)*(i-i).p(i).]          i,O.]$              
+176 :                     :(i+i)*(i-i).p(i).]           ,O.]$               
+177 : TS_NOK/NS_NORULECHAIN
+177 : RESSTATE            
+177 :                     i:(i+i)*(i-i).p(i).]          O.]$                
+178 : TNS_NORULECHAIN/NS_NORULE
+178 : RESSTATE            
+178 :                     ti:(i+i)*(i-i).p(i).]         N]$                 
+179 : N->ti:P.N           ti:(i+i)*(i-i).p(i).]         N]$                 
+179 : SAVESTATE:          28
+179 :                     ti:(i+i)*(i-i).p(i).]         ti:P.N]$            
+180 :                     i:(i+i)*(i-i).p(i).]          i:P.N]$             
+181 :                     :(i+i)*(i-i).p(i).]           :P.N]$              
+182 :                     (i+i)*(i-i).p(i).]            P.N]$               
+183 : P->(P)              (i+i)*(i-i).p(i).]            P.N]$               
+183 : SAVESTATE:          29
+183 :                     (i+i)*(i-i).p(i).]            (P).N]$             
+184 :                     i+i)*(i-i).p(i).]             P).N]$              
+185 : P->i                i+i)*(i-i).p(i).]             P).N]$              
+185 : SAVESTATE:          30
+185 :                     i+i)*(i-i).p(i).]             i).N]$              
+186 :                     +i)*(i-i).p(i).]              ).N]$               
+187 : TS_NOK/NS_NORULECHAIN
 187 : RESSTATE            
-187 :                     i)*(i-i).p(i).]               P).N]$              
-188 : P->iMP              i)*(i-i).p(i).]               P).N]$              
-188 : SAVESTATE:          31
-188 :                     i)*(i-i).p(i).]               iMP).N]$            
-189 :                     )*(i-i).p(i).]                MP).N]$             
+187 :                     i+i)*(i-i).p(i).]             P).N]$              
+188 : P->iP               i+i)*(i-i).p(i).]             P).N]$              
+188 : SAVESTATE:          30
+188 :                     i+i)*(i-i).p(i).]             iP).N]$             
+189 :                     +i)*(i-i).p(i).]              P).N]$              
 190 : TNS_NORULECHAIN/NS_NORULE
 190 : RESSTATE            
-190 :                     i)*(i-i).p(i).]               P).N]$              
-191 : TNS_NORULECHAIN/NS_NORULE
-191 : RESSTATE            
-191 :                     +i)*(i-i).p(i).]              MP).N]$             
-192 : TNS_NORULECHAIN/NS_NORULE
-192 : RESSTATE            
-192 :                     i+i)*(i-i).p(i).]             P).N]$              
-193 : TNS_NORULECHAIN/NS_NORULE
-193 : RESSTATE            
-193 :                     (i+i)*(i-i).p(i).]            P.N]$               
-194 : P->(P)MP            (i+i)*(i-i).p(i).]            P.N]$               
-194 : SAVESTATE:          28
-194 :                     (i+i)*(i-i).p(i).]            (P)MP.N]$           
-195 :                     i+i)*(i-i).p(i).]             P)MP.N]$            
-196 : P->i                i+i)*(i-i).p(i).]             P)MP.N]$            
-196 : SAVESTATE:          29
-196 :                     i+i)*(i-i).p(i).]             i)MP.N]$            
-197 :                     +i)*(i-i).p(i).]              )MP.N]$             
+190 :                     i+i)*(i-i).p(i).]             P).N]$              
+191 : P->iMP              i+i)*(i-i).p(i).]             P).N]$              
+191 : SAVESTATE:          30
+191 :                     i+i)*(i-i).p(i).]             iMP).N]$            
+192 :                     +i)*(i-i).p(i).]              MP).N]$             
+193 : M->+                +i)*(i-i).p(i).]              MP).N]$             
+193 : SAVESTATE:          31
+193 :                     +i)*(i-i).p(i).]              +P).N]$             
+194 :                     i)*(i-i).p(i).]               P).N]$              
+195 : P->i                i)*(i-i).p(i).]               P).N]$              
+195 : SAVESTATE:          32
+195 :                     i)*(i-i).p(i).]               i).N]$              
+196 :                     )*(i-i).p(i).]                ).N]$               
+197 :                     *(i-i).p(i).]                 .N]$                
 198 : TS_NOK/NS_NORULECHAIN
 198 : RESSTATE            
-198 :                     i+i)*(i-i).p(i).]             P)MP.N]$            
-199 : P->iP               i+i)*(i-i).p(i).]             P)MP.N]$            
-199 : SAVESTATE:          29
-199 :                     i+i)*(i-i).p(i).]             iP)MP.N]$           
-200 :                     +i)*(i-i).p(i).]              P)MP.N]$            
+198 :                     i)*(i-i).p(i).]               P).N]$              
+199 : P->iP               i)*(i-i).p(i).]               P).N]$              
+199 : SAVESTATE:          32
+199 :                     i)*(i-i).p(i).]               iP).N]$             
+200 :                     )*(i-i).p(i).]                P).N]$              
 201 : TNS_NORULECHAIN/NS_NORULE
 201 : RESSTATE            
-201 :                     i+i)*(i-i).p(i).]             P)MP.N]$            
-202 : P->iMP              i+i)*(i-i).p(i).]             P)MP.N]$            
-202 : SAVESTATE:          29
-202 :                     i+i)*(i-i).p(i).]             iMP)MP.N]$          
-203 :                     +i)*(i-i).p(i).]              MP)MP.N]$           
-204 : M->+                +i)*(i-i).p(i).]              MP)MP.N]$           
-204 : SAVESTATE:          30
-204 :                     +i)*(i-i).p(i).]              +P)MP.N]$           
-205 :                     i)*(i-i).p(i).]               P)MP.N]$            
-206 : P->i                i)*(i-i).p(i).]               P)MP.N]$            
-206 : SAVESTATE:          31
-206 :                     i)*(i-i).p(i).]               i)MP.N]$            
-207 :                     )*(i-i).p(i).]                )MP.N]$             
-208 :                     *(i-i).p(i).]                 MP.N]$              
-209 : M->*                *(i-i).p(i).]                 MP.N]$              
-209 : SAVESTATE:          32
-209 :                     *(i-i).p(i).]                 *P.N]$              
-210 :                     (i-i).p(i).]                  P.N]$               
-211 : P->(P)              (i-i).p(i).]                  P.N]$               
-211 : SAVESTATE:          33
-211 :                     (i-i).p(i).]                  (P).N]$             
-212 :                     i-i).p(i).]                   P).N]$              
-213 : P->i                i-i).p(i).]                   P).N]$              
-213 : SAVESTATE:          34
-213 :                     i-i).p(i).]                   i).N]$              
-214 :                     -i).p(i).]                    ).N]$               
-215 : TS_NOK/NS_NORULECHAIN
+201 :                     i)*(i-i).p(i).]               P).N]$              
+202 : P->iMP              i)*(i-i).p(i).]               P).N]$              
+202 : SAVESTATE:          32
+202 :                     i)*(i-i).p(i).]               iMP).N]$            
+203 :                     )*(i-i).p(i).]                MP).N]$             
+204 : TNS_NORULECHAIN/NS_NORULE
+204 : RESSTATE            
+204 :                     i)*(i-i).p(i).]               P).N]$              
+205 : TNS_NORULECHAIN/NS_NORULE
+205 : RESSTATE            
+205 :                     +i)*(i-i).p(i).]              MP).N]$             
+206 : TNS_NORULECHAIN/NS_NORULE
+206 : RESSTATE            
+206 :                     i+i)*(i-i).p(i).]             P).N]$              
+207 : TNS_NORULECHAIN/NS_NORULE
+207 : RESSTATE            
+207 :                     (i+i)*(i-i).p(i).]            P.N]$               
+208 : P->(P)MP            (i+i)*(i-i).p(i).]            P.N]$               
+208 : SAVESTATE:          29
+208 :                     (i+i)*(i-i).p(i).]            (P)MP.N]$           
+209 :                     i+i)*(i-i).p(i).]             P)MP.N]$            
+210 : P->i                i+i)*(i-i).p(i).]             P)MP.N]$            
+210 : SAVESTATE:          30
+210 :                     i+i)*(i-i).p(i).]             i)MP.N]$            
+211 :                     +i)*(i-i).p(i).]              )MP.N]$             
+212 : TS_NOK/NS_NORULECHAIN
+212 : RESSTATE            
+212 :                     i+i)*(i-i).p(i).]             P)MP.N]$            
+213 : P->iP               i+i)*(i-i).p(i).]             P)MP.N]$            
+213 : SAVESTATE:          30
+213 :                     i+i)*(i-i).p(i).]             iP)MP.N]$           
+214 :                     +i)*(i-i).p(i).]              P)MP.N]$            
+215 : TNS_NORULECHAIN/NS_NORULE
 215 : RESSTATE            
-215 :                     i-i).p(i).]                   P).N]$              
-216 : P->iP               i-i).p(i).]                   P).N]$              
-216 : SAVESTATE:          34
-216 :                     i-i).p(i).]                   iP).N]$             
-217 :                     -i).p(i).]                    P).N]$              
-218 : TNS_NORULECHAIN/NS_NORULE
-218 : RESSTATE            
-218 :                     i-i).p(i).]                   P).N]$              
-219 : P->iMP              i-i).p(i).]                   P).N]$              
-219 : SAVESTATE:          34
-219 :                     i-i).p(i).]                   iMP).N]$            
-220 :                     -i).p(i).]                    MP).N]$             
-221 : M->-                -i).p(i).]                    MP).N]$             
-221 : SAVESTATE:          35
-221 :                     -i).p(i).]                    -P).N]$             
-222 :                     i).p(i).]                     P).N]$              
-223 : P->i                i).p(i).]                     P).N]$              
-223 : SAVESTATE:          36
-223 :                     i).p(i).]                     i).N]$              
-224 :                     ).p(i).]                      ).N]$               
-225 :                     .p(i).]                       .N]$                
-226 :                     p(i).]                        N]$                 
-227 : N->p(i).N           p(i).]                        N]$                 
-227 : SAVESTATE:          37
-227 :                     p(i).]                        p(i).N]$            
-228 :                     (i).]                         (i).N]$             
-229 :                     i).]                          i).N]$              
-230 :                     ).]                           ).N]$               
-231 :                     .]                            .N]$                
-232 :                     ]                             N]$                 
-233 : TNS_NORULECHAIN/NS_NORULE
-233 : RESSTATE            
-233 :                     p(i).]                        N]$                 
-234 : N->p(i).            p(i).]                        N]$                 
-234 : SAVESTATE:          37
-234 :                     p(i).]                        p(i).]$             
-235 :                     (i).]                         (i).]$              
-236 :                     i).]                          i).]$               
-237 :                     ).]                           ).]$                
-238 :                     .]                            .]$                 
-239 :                     ]                             ]$                  
-240 :                                                   $                   
-241 : LENTA_END           
-242 : -------> NS_LENTA_END
+215 :                     i+i)*(i-i).p(i).]             P)MP.N]$            
+216 : P->iMP              i+i)*(i-i).p(i).]             P)MP.N]$            
+216 : SAVESTATE:          30
+216 :                     i+i)*(i-i).p(i).]             iMP)MP.N]$          
+217 :                     +i)*(i-i).p(i).]              MP)MP.N]$           
+218 : M->+                +i)*(i-i).p(i).]              MP)MP.N]$           
+218 : SAVESTATE:          31
+218 :                     +i)*(i-i).p(i).]              +P)MP.N]$           
+219 :                     i)*(i-i).p(i).]               P)MP.N]$            
+220 : P->i                i)*(i-i).p(i).]               P)MP.N]$            
+220 : SAVESTATE:          32
+220 :                     i)*(i-i).p(i).]               i)MP.N]$            
+221 :                     )*(i-i).p(i).]                )MP.N]$             
+222 :                     *(i-i).p(i).]                 MP.N]$              
+223 : M->*                *(i-i).p(i).]                 MP.N]$              
+223 : SAVESTATE:          33
+223 :                     *(i-i).p(i).]                 *P.N]$              
+224 :                     (i-i).p(i).]                  P.N]$               
+225 : P->(P)              (i-i).p(i).]                  P.N]$               
+225 : SAVESTATE:          34
+225 :                     (i-i).p(i).]                  (P).N]$             
+226 :                     i-i).p(i).]                   P).N]$              
+227 : P->i                i-i).p(i).]                   P).N]$              
+227 : SAVESTATE:          35
+227 :                     i-i).p(i).]                   i).N]$              
+228 :                     -i).p(i).]                    ).N]$               
+229 : TS_NOK/NS_NORULECHAIN
+229 : RESSTATE            
+229 :                     i-i).p(i).]                   P).N]$              
+230 : P->iP               i-i).p(i).]                   P).N]$              
+230 : SAVESTATE:          35
+230 :                     i-i).p(i).]                   iP).N]$             
+231 :                     -i).p(i).]                    P).N]$              
+232 : TNS_NORULECHAIN/NS_NORULE
+232 : RESSTATE            
+232 :                     i-i).p(i).]                   P).N]$              
+233 : P->iMP              i-i).p(i).]                   P).N]$              
+233 : SAVESTATE:          35
+233 :                     i-i).p(i).]                   iMP).N]$            
+234 :                     -i).p(i).]                    MP).N]$             
+235 : M->-                -i).p(i).]                    MP).N]$             
+235 : SAVESTATE:          36
+235 :                     -i).p(i).]                    -P).N]$             
+236 :                     i).p(i).]                     P).N]$              
+237 : P->i                i).p(i).]                     P).N]$              
+237 : SAVESTATE:          37
+237 :                     i).p(i).]                     i).N]$              
+238 :                     ).p(i).]                      ).N]$               
+239 :                     .p(i).]                       .N]$                
+240 :                     p(i).]                        N]$                 
+241 : N->p(i).N           p(i).]                        N]$                 
+241 : SAVESTATE:          38
+241 :                     p(i).]                        p(i).N]$            
+242 :                     (i).]                         (i).N]$             
+243 :                     i).]                          i).N]$              
+244 :                     ).]                           ).N]$               
+245 :                     .]                            .N]$                
+246 :                     ]                             N]$                 
+247 : TNS_NORULECHAIN/NS_NORULE
+247 : RESSTATE            
+247 :                     p(i).]                        N]$                 
+248 : N->p(i).            p(i).]                        N]$                 
+248 : SAVESTATE:          38
+248 :                     p(i).]                        p(i).]$             
+249 :                     (i).]                         (i).]$              
+250 :                     i).]                          i).]$               
+251 :                     ).]                           ).]$                
+252 :                     .]                            .]$                 
+253 :                     ]                             ]$                  
+254 :                                                   $                   
+255 : LENTA_END           
+256 : -------> NS_LENTA_END
 --------------------------------------------------------------
-Всего строк 107, Синтаксический анализ выполнен без ошибок
+Всего строк 112, Синтаксический анализ выполнен без ошибок
 0   : S->tfi(Q)[Y]S       
 4   : Q->ti               
 8   : Y->ti:E.Y           
@@ -442,22 +466,23 @@
 45  : E->l                
 47  : N->w(K)[N]e[N]N     
 49  : K->iBi              
-50  : B->>                
+50  : B->=                
 54  : N->ti:E.N           
 57  : E->i(O)             
 59  : O->i                
-62  : N->p(i).            
-70  : N->ti:E.N           
-73  : E->s(i,i)           
-80  : N->p(i).            
-86  : N->ti:P.N           
-89  : P->(P)MP            
-90  : P->iMP              
-91  : M->+                
-92  : P->i                
-94  : M->*                
-95  : P->(P)              
-96  : P->iMP              
-97  : M->-                
-98  : P->i                
-101 : N->p(i).            
+62  : N->p(l).N           
+67  : N->p(i).            
+75  : N->ti:E.N           
+78  : E->s(i,i)           
+85  : N->p(i).            
+91  : N->ti:P.N           
+94  : P->(P)MP            
+95  : P->iMP              
+96  : M->+                
+97  : P->i                
+99  : M->*                
+100 : P->(P)              
+101 : P->iMP              
+102 : M->-                
+103 : P->i                
+106 : N->p(i).            

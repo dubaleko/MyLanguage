@@ -293,7 +293,7 @@ namespace SA
 					{
 						if (strcmp(buf[0], itable.table[j].id) == 0)
 						{
-							if (itable.table[j].iddatatype != ID::BOOL)
+							if (itable.table[j].iddatatype != ID::STR)
 							{
 								throw ERROR_THROW(702, ltable.table[i].sn, ltable.table[i].indxTI);
 							}
